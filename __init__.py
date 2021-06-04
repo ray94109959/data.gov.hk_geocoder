@@ -12,7 +12,7 @@ import os
 from uuid import uuid4
 import datetime
 
-sys.path.append('/home/try123/flasktry/test-flask/data_json_validator/validator')
+sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
 # import validate_data_json
 import geocoder
 
@@ -23,14 +23,14 @@ app.secret_key = '123456789'
 # app.run(debug=True) 
 
 # filehex = uuid4().hex
-# app.config['UPLOAD_FOLDER']  = os.path.join('/home/try123/flasktry/test-flask/data_json_validator/validator/csvupload', filehex)
+# app.config['UPLOAD_FOLDER']  = os.path.join('/bd-ogcdp/tools/geo_coding_tool/validator/csvupload', filehex)
 # if not os.path.exists(app.config['UPLOAD_FOLDER']):
 #     os.makedirs(app.config['UPLOAD_FOLDER'])
 ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'xls'}
 
 def changehex():
     filehex = uuid4().hex
-    app.config['UPLOAD_FOLDER']  = os.path.join('/home/try123/flasktry/test-flask/data_json_validator/validator/csvupload', filehex)
+    app.config['UPLOAD_FOLDER']  = os.path.join('/bd-ogcdp/tools/geo_coding_tool/validator/csvupload', filehex)
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
 
