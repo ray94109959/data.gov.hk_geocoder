@@ -6,15 +6,20 @@ from concurrent.futures import ThreadPoolExecutor
 
 def parse(x):
     finallist = []
+    print('1008a')
     if x != 'error1':
+        print('1008b')
         page = requests.get(x).text
+        print('1008c')
         soup = bs(page, 'lxml')
+        print('1008d')
         data = soup.find_all('engpremisesaddress', limit=11)
         data1 = soup.find_all('chipremisesaddress', limit=11)
         data2 = soup.find_all('geoaddress', limit=11)
         data3 = soup.find_all('latitude', limit=11)
         data4 = soup.find_all('longitude', limit=11)
         data5 = soup.find_all('validationinformation', limit=11)
+        print('1008e')
         if data == []:
             finallist.append(["Error", "2"])
         else:
@@ -27,8 +32,10 @@ def parse(x):
                 rank5 = data5[i].get_text(',')
                 resultlist = [rank, rank1, rank2, rank3, rank4, rank5]
                 finallist.append(resultlist)
+        print('1008f')
             
     else:
+        print('1008bi')
         finallist.append(["Error", "1"])
     #   print('x')
     return(finallist)
