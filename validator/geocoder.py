@@ -36,6 +36,7 @@ def parse(x):
 
 def findaddress(addressdata, logfilepathname):       
     # if __name__ == '__main__':
+        print('1007')
         executor = ThreadPoolExecutor(max_workers=5)
         global latlist
         global lnglist
@@ -59,18 +60,20 @@ def findaddress(addressdata, logfilepathname):
             except:
                 urllist.append('error1')
         # print(urllist)
-    
+        print('1008')
         result = executor.map(parse, urllist)
         finals = []
 
         for value in result:
             finals.append(value)
-        print(finals)
+        # print(finals)
+        print('1009')
         
         for l in range(len(finals)):
-                if len(finals[l]) > 1:    
+                if len(finals[l]) > 1:
                     if finals[l][0][-1] != finals[l][1][-1]:
-                        print('3: Highest Score Address Found')
+                        # print('3: Highest Score Address Found')
+                        print('1010')
                         latlist.append(finals[l][0][-3])
                         lnglist.append(finals[l][0][-2])
 
@@ -94,7 +97,8 @@ def findaddress(addressdata, logfilepathname):
                         if finals[l][0][-1] == finals[l][1][-1]:
                             if finals[l][-1][-1] == finals[l][1][-1]:
                                 # print('limited to 10')
-                                print('6: 10+ Same Score Returned')
+                                # print('6: 10+ Same Score Returned')
+                                print('1010')
                                 latlist.append(finals[l][0][-3])
                                 lnglist.append(finals[l][0][-2])
                                 engaddressappend = []
@@ -141,7 +145,8 @@ def findaddress(addressdata, logfilepathname):
                                 with open(logfilepathname, 'a', encoding='utf-8-sig', newline='') as f:
                                     dv.to_csv(f, header=False, index=False)
                             else:
-                                print('4: Same Score')
+                                # print('4: Same Score')
+                                print('1010')
                                 latlist.append(finals[l][0][-3])
                                 lnglist.append(finals[l][0][-2])
                                 engaddressappend = []
@@ -209,7 +214,8 @@ def findaddress(addressdata, logfilepathname):
 
                 else:
                     if finals[l][0][0] == "Error" and finals[l][0][1] == "1":
-                        print('1: Error - Address field cannot be empty')
+                        # print('1: Error - Address field cannot be empty')
+                        print('1010')
                         latlist.append("Error")
                         lnglist.append("Error")
 
@@ -230,7 +236,8 @@ def findaddress(addressdata, logfilepathname):
                             dp.to_csv(ffile, header=False, index=False)
 
                     elif finals[l][0][0] == "Error" and finals[l][0][1] == "2":
-                        print('2: Error - Address not found in ADI Tool')
+                        # print('2: Error - Address not found in ADI Tool')
+                        print('1010')
                         latlist.append("Error")
                         lnglist.append("Error")
 
@@ -250,8 +257,8 @@ def findaddress(addressdata, logfilepathname):
                         with open(logfilepathname, 'a', encoding='utf-8-sig', newline='') as ffile:
                             dp.to_csv(ffile, header=False, index=False)
                     else:
-                        print('5: Highest Score Address Found')
-                        # print(finals[l])
+                        # print('5: Highest Score Address Found')
+                        print('1010')
                         # print(finals[l])
                         latlist.append(finals[l][0][-3])
                         lnglist.append(finals[l][0][-2])

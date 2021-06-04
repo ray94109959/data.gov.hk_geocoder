@@ -69,6 +69,7 @@ def allowed_file(filename):
 @app.route('/', methods=['GET', 'POST'])
 def front():
     if request.method == 'GET':
+        print('1000')
         auth_info = 'Internet'
         path_prefix = ''
         return render_template('page.html',
@@ -81,16 +82,19 @@ def front():
                             message = '')
 
     if request.method == 'POST':
+        print('1001')
         changehex()
         auth_info = 'Internet'
         path_prefix = ''
         # print(os.stat(request.files['data_file']).st_size)
         data_file = request.files['data_file']
+        print('1002')
         addresscol = request.form['addresscol']
+        print('1003')
         # print(type(data_file))
         
         if data_file.filename=='':
-            # flash('Please upload a csv file with content, it cannot be empty.', 'red')
+            print('1004')
             return render_template('page.html',
                                 submitbuttondisplay = 'show',
                                 auth_info=auth_info,
@@ -102,7 +106,7 @@ def front():
                                 )
         
         if addresscol=='':
-            # flash('Please enter Address Field Name, it cannot be empty.', 'red')
+            print('1004')
             return render_template('page.html',
                                 submitbuttondisplay = 'show',
                                 auth_info=auth_info,
@@ -116,11 +120,13 @@ def front():
 
         if allowed_file(data_file.filename):
             try:
+                print('1004')
                 data_file.seek(0, os.SEEK_END)
                 data_file_length = data_file.tell()
                 # print(data_file_length)
                 data_file.seek(0, 0)
                 if data_file_length > (2*1028*1028):
+                    print('1005')
                     return render_template('page.html',
                                     submitbuttondisplay = 'show',
                                     auth_info=auth_info,
@@ -135,6 +141,7 @@ def front():
                 front.urlfilename = urlfilename
                 logfilename = ''.join([urlfilename, '-logfile.csv'])
                 front.logfilename = logfilename
+                print('1005')
                 logsavepath = os.path.join(app.config["UPLOAD_FOLDER"], logfilename)
                 front.logsavepath = logsavepath
                 front.filename = filename
@@ -144,45 +151,52 @@ def front():
                 # filename = front.filename
                 # print(filename[-4:])
                 if filename[-4:] == 'xlsx':
+                    print('1006')
                     excelfilename = ''.join([urlfilename, '.csv'])
                     data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
                     datacsv = pd.read_excel(os.path.join(app.config["UPLOAD_FOLDER"], filename), index_col=None, engine='openpyxl') #pip3 install openpyxl, xlrd
                     editedfilename = ''.join(['edit_',excelfilename])
                 elif filename[-4:] == '.xls':
+                    print('1006')
                     excelfilename = ''.join([urlfilename, '.csv'])
                     data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
                     datacsv = pd.read_excel(os.path.join(app.config["UPLOAD_FOLDER"], filename), index_col=None) 
                     editedfilename = ''.join(['edit_',excelfilename])
                 elif filename[-4:] == '.csv':
                     # print('iscsv')
+                    print('1006')
                     data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
                     try:
+                        print('1006a')
                         # data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
                         datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding='utf-8-sig')
                         editedfilename = ''.join(['edit_',filename])
                     except:
-                        print('csv, not utf-8')
-                        print(data_file)
+                        print('1006a')
+                        # print(data_file)
                         # data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
                         datacsv1 = open(os.path.join(app.config["UPLOAD_FOLDER"], filename), 'rb').read()
                         uniencoding = chardet.detect(datacsv1).get('encoding')
                         print(uniencoding)
                         try:
+                            print('1006b')
                             datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding)
                         except:
+                            print('1006b')
                             datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding, delimiter='\t')
                         editedfilename = ''.join(['edited-',filename])
 
                 
                 getdata(datacsv, front.addresscol)
-                print(datacsv)
-                
+                # print(datacsv)
+                print('1011')
                 datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
                 print(editedfilename)
                 front.editedfilename = editedfilename
                 with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
                     csv_reader = csv.reader(csv_file, delimiter=',')
                     csv_reader = list(csv_reader)
+                print('1012')
                 return render_template("page.html",
                                     auth_info=auth_info,
                                     path_prefix=path_prefix,
@@ -199,6 +213,7 @@ def front():
                                     )
             except Exception as e:
                 print(e)
+                print('1004')
                 return render_template('page.html',
                                 submitbuttondisplay = 'show',
                                 submitbuttonpressed = '',
@@ -209,6 +224,7 @@ def front():
                                 message_failed = 'Address Column Name not found in csv'
                                 )
         else:
+            print('1004')
             return render_template('page.html',
                                 submitbuttondisplay = 'show',
                                 submitbuttonpressed = '',
