@@ -1,0 +1,240 @@
+import sys
+import chardet
+from flask import Flask
+from flask import render_template
+from flask import request
+from flask import make_response
+from flask.helpers import send_file
+from werkzeug.utils import secure_filename
+import pandas as pd
+import csv
+import os
+from uuid import uuid4
+import datetime
+
+sys.path.append('/home/try123/flasktry/test-flask/data_json_validator/validator')
+# import validate_data_json
+import geocoder
+
+app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+app.secret_key = '123456789'
+# app.run(debug=True) 
+
+# filehex = uuid4().hex
+# app.config['UPLOAD_FOLDER']  = os.path.join('/home/try123/flasktry/test-flask/data_json_validator/validator/csvupload', filehex)
+# if not os.path.exists(app.config['UPLOAD_FOLDER']):
+#     os.makedirs(app.config['UPLOAD_FOLDER'])
+ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'xls'}
+
+def changehex():
+    filehex = uuid4().hex
+    app.config['UPLOAD_FOLDER']  = os.path.join('/home/try123/flasktry/test-flask/data_json_validator/validator/csvupload', filehex)
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+
+def timenow():
+    d1 = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+    return d1
+
+if app.config["DEBUG"]:
+    @app.after_request
+    def after_request(response):
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, public, max-age=0"
+        response.headers["Expires"] = 0
+        response.headers["Pragma"] = "no-cache"
+        return response
+
+def getdata(csvdata, addresscolumn):
+    # colname = "Address Name"
+    colname = addresscolumn
+    addressdata = csvdata[colname].tolist()
+    logfilename = ''.join([front.urlfilename, '-logfile.csv'])
+    logsavepath = os.path.join(app.config["UPLOAD_FOLDER"], logfilename)
+    csvheader = ["ID","Address Name", "Score", "Remarks", "Latitude", "Longitude", "Geoaddress","English Address Returned by ALS", "Chinese Address Returned by ALS"]
+    with open(logsavepath, 'w') as blank:
+        blankwriter = csv.writer(blank, delimiter=',')
+        blankwriter.writerow(csvheader)
+
+    geocoder.findaddress(addressdata, logsavepath)
+    csvdata["ALS Latitude"] = geocoder.latlist
+    csvdata["ALS Longitude"] = geocoder.lnglist
+    return csvdata
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/', methods=['GET', 'POST'])
+def front():
+    if request.method == 'GET':
+        auth_info = 'Internet'
+        path_prefix = ''
+        return render_template('page.html',
+                            auth_info=auth_info,
+                            submitbuttondisplay = 'show',
+                            datacsvcsv = '',
+                            path_prefix=path_prefix,
+                            csvdownload = "",
+                            submitbuttonpressed = '',
+                            message = '')
+
+    if request.method == 'POST':
+        changehex()
+        auth_info = 'Internet'
+        path_prefix = ''
+        # print(os.stat(request.files['data_file']).st_size)
+        data_file = request.files['data_file']
+        addresscol = request.form['addresscol']
+        # print(type(data_file))
+        
+        if data_file.filename=='':
+            # flash('Please upload a csv file with content, it cannot be empty.', 'red')
+            return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                submitbuttonpressed = '',
+                                message_failed = 'Upload file not found',
+                                datacsvcsv = ''
+                                )
+        
+        if addresscol=='':
+            # flash('Please enter Address Field Name, it cannot be empty.', 'red')
+            return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                submitbuttonpressed = '',
+                                datacsvcsv = '',
+                                message_failed = 'Please enter Address Field Name, it cannot be empty.'
+                                )
+        
+
+        if allowed_file(data_file.filename):
+            try:
+                data_file.seek(0, os.SEEK_END)
+                data_file_length = data_file.tell()
+                # print(data_file_length)
+                data_file.seek(0, 0)
+                if data_file_length > (2*1028*1028):
+                    return render_template('page.html',
+                                    submitbuttondisplay = 'show',
+                                    auth_info=auth_info,
+                                    path_prefix=path_prefix,
+                                    csvdownload = "",
+                                    submitbuttonpressed = '',
+                                    message_failed = 'Upload file too large',
+                                    datacsvcsv = ''
+                                    )
+                filename = secure_filename(data_file.filename)
+                urlfilename = filename[:-4]
+                front.urlfilename = urlfilename
+                logfilename = ''.join([urlfilename, '-logfile.csv'])
+                front.logfilename = logfilename
+                logsavepath = os.path.join(app.config["UPLOAD_FOLDER"], logfilename)
+                front.logsavepath = logsavepath
+                front.filename = filename
+                d1 = timenow()
+                front.addresscol = addresscol
+                
+                # filename = front.filename
+                # print(filename[-4:])
+                if filename[-4:] == 'xlsx':
+                    excelfilename = ''.join([urlfilename, '.csv'])
+                    data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                    datacsv = pd.read_excel(os.path.join(app.config["UPLOAD_FOLDER"], filename), index_col=None, engine='openpyxl') #pip3 install openpyxl, xlrd
+                    editedfilename = ''.join(['edit_',excelfilename])
+                elif filename[-4:] == '.xls':
+                    excelfilename = ''.join([urlfilename, '.csv'])
+                    data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                    datacsv = pd.read_excel(os.path.join(app.config["UPLOAD_FOLDER"], filename), index_col=None) 
+                    editedfilename = ''.join(['edit_',excelfilename])
+                elif filename[-4:] == '.csv':
+                    # print('iscsv')
+                    data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                    try:
+                        # data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                        datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding='utf-8-sig')
+                        editedfilename = ''.join(['edit_',filename])
+                    except:
+                        print('csv, not utf-8')
+                        print(data_file)
+                        # data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+                        datacsv1 = open(os.path.join(app.config["UPLOAD_FOLDER"], filename), 'rb').read()
+                        uniencoding = chardet.detect(datacsv1).get('encoding')
+                        print(uniencoding)
+                        try:
+                            datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding)
+                        except:
+                            datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding, delimiter='\t')
+                        editedfilename = ''.join(['edited-',filename])
+
+                
+                getdata(datacsv, front.addresscol)
+                print(datacsv)
+                
+                datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
+                print(editedfilename)
+                front.editedfilename = editedfilename
+                with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
+                    csv_reader = csv.reader(csv_file, delimiter=',')
+                    csv_reader = list(csv_reader)
+                return render_template("page.html",
+                                    auth_info=auth_info,
+                                    path_prefix=path_prefix,
+                                    submitbuttondisplay = 'hide',
+                                    submitbuttonpressed = '',
+                                    csvdownload = editedfilename,
+                                    datacsvcsv=csv_reader,
+                                    d1=d1,
+                                    file=urlfilename,
+                                    message = 'Success, download updated csv file and log file here',
+                                    message_file= "Uploaded file: {}".format(front.filename),
+                                    # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                                    message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                                    )
+            except Exception as e:
+                print(e)
+                return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                submitbuttonpressed = '',
+                                datacsvcsv = '',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                message_failed = 'Address Column Name not found in csv'
+                                )
+        else:
+            return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                submitbuttonpressed = '',
+                                datacsvcsv = '',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                message_failed = 'Please upload a csv file')
+
+
+@app.route('/result/<d1>/<file>/downloadcsv', methods=['GET', 'POST'])
+def downloadcsv(d1,file):
+    if request.method == 'GET':
+        resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
+        resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
+        resp.headers["Content-Type"] = "text/csv"
+        return resp
+
+@app.route('/result/<d1>/<file>/downloadlog', methods=['GET', 'POST'])
+def downloadlog(d1,file):
+    if request.method == 'GET':
+        resp = make_response(send_file(front.logsavepath))
+        resp.headers["Content-Disposition"] = "attachment; filename={logfilename}".format(logfilename = front.logfilename)
+        resp.headers["Content-Type"] = "text/csv"
+        return resp
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

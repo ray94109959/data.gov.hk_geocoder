@@ -1,0 +1,68 @@
+#auth-info {
+    color: #ffffff;
+    background-color: #000000;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 14px;
+    text-align: right;
+    padding-top: 0.2em;
+    padding-right: 0.8em;
+    padding-bottom: 0.2em;
+    padding-left: 0.8em;
+}
+
+#header img {
+    float: left;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+#header h2 {
+    float: left;
+}
+
+#raw-data-json {
+    color: #003399;
+    display: block;
+    font-size: 12px;
+    line-height: 110%;
+    margin: 0;
+    padding: 10.5px;
+    word-break: keep-all;
+    word-wrap: normal;
+    white-space: pre;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    overflow: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#upload-form {
+    margin-top: 22px;
+}
+
+#file-selector {
+    padding: 0;
+}
+
+#result-list {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+#result-list ul {
+    list-style-type: square;
+    margin-bottom: 0;
+    padding-left: 25px;
+}
+
+#result-list ul li {
+    font-size: 12px;
+    line-height: 110%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    word-break: keep-all;
+    word-wrap: normal;
+    white-space: pre;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}

@@ -1,0 +1,168 @@
+body {
+    display:block;
+    margin: 0px;
+}
+
+.headercontainer {
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+    width: 100%;
+    background-color: #25293A;
+    height: 80px;
+    top: 0px;
+    left: 0px;
+    /* z-index: 9; */
+    display: block;
+}
+
+.headerleft {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.headerimg {
+    vertical-align: middle;
+    height: 50px;
+    height:100%;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.headerright {
+    float: right;
+    display: inline-block;
+    height: 50px;
+    padding: 27px 15px 8px 10px;
+    color: #fff;
+    background: #25293A;
+    border: 0;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    
+}
+
+.headerwords {
+    font-family: "ArialMT",Arial,sans-serif;
+}
+
+.header {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    font-family: "Arial-BoldMT",Arial;
+    display: block;
+    
+    /* margin-block-start: 7em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+}
+
+
+.formcontainer {
+    text-align: center;
+}
+
+.uploadcontainer {
+    display: inline-block;
+    padding:8px 12px;
+    font-size:20px;
+    font-weight:normal;
+    line-height:1;
+    color:#333333;
+    text-align:center;
+    background-color: #eeeeee;
+    border:1px solid #dddddd;
+    border-radius:4px
+}
+
+.input-text-name {
+    font-weight: bold;
+}
+
+.radiocolumntext {
+    font-weight: bold;
+    float:left;
+}
+
+.form-control {
+    font-size: 16px;
+}
+
+.form-group-left {
+    float: left;
+    width: 15%;
+    padding:10px 0px;
+    margin: 0 auto;
+}
+
+.form-group-text {
+    float: left;
+    width: 35%;
+    padding:10px 0px;
+    margin: 0 auto;
+}
+
+.form-group-radio {
+    float: left;
+    width: 25%;
+    padding:0px 50px;
+    margin: 0 auto;
+}
+
+.form-group-right {
+    float: left;
+    width: 25%;
+    padding:10px 0px;
+    margin: 0 auto;
+}
+
+.inputcontainer {
+    display: flexbox;
+}
+
+.formcontainer:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+.form-group1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.form-controll {
+    /* display: block; */
+    padding: 4px 8px;
+    width: 50%;
+    font-size: 18px;
+    color: black;
+    font-weight: 100;
+    
+}
+
+.radiocontainer {
+    display: inline-block;
+    text-align: left;
+}
+
+.radiocolumn {
+    float:left
+}
+
+.submitcontainer {
+    /* display: inline-block; */
+    text-align: center;
+}
+
+.submit {
+    font-size: 16px;
+    padding: 4px 8px;
+}

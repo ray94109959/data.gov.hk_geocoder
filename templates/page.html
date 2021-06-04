@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Geo-Coding Tool | DATA.GOV.HK</title>
+  
+  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/static/css/mainstyle.css" />
+  <link rel="icon" href="{{ path_prefix }}/static/img/logo_placeholder2.png" type="image/x-icon">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">// <![CDATA[
+        function showPicture() {
+          var sourceOfPicture = "/static/img/loading2.gif";
+          var img = document.getElementById('loading')
+          img.src = sourceOfPicture.replace('225x225', '225x225');
+          img.style.display = "block";
+        } 
+// ]]></script>
+
+</head>
+
+<body>
+<div class="headercontainer">
+  <div class="headercontainer-addon">
+    <div class="col-lg-6" id="header">
+      
+      <img src="{{ path_prefix }}/static/img/logo_placeholder.png">
+    </div>
+    <div id="auth-info">
+      {{ auth_info|e }}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="bs-docs-section">
+    <div class = "headertext">
+      <h2>Geo-Coding Tool</h2>
+    </div>  
+      <div class="row">
+        <div class="col-lg-6">
+          <form enctype="multipart/form-data" method="post" class="bs-component" id="upload-form">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">File:</span>
+                <input type="file" name="data_file" class="form-control" id="file-selector">
+                
+              </div>  
+            </div>
+            <h5>Upload File should be less than 2MB</h5>
+            
+            <div class="form-group">
+              <div class="input-group2">
+                <div class="col-lg-10">
+                  <form>
+                    <label for="fname">Address Column Name:</label>
+                    <input type="text" id="addresscol" name="addresscol" maxlength='100'>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="input-group-btn">
+              <button class="btn btn-primary" type="submit" form="upload-form", value='submit', onclick="showPicture()">Submit</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<img style="display:none;" id="loading" src="loading" />
+
+{% if message != "" %}
+  <p>
+    <div class='msg-success'>
+      <div class='msg-failed'>
+        {{message_failed}}
+      </div>
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message_file}}
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message}}
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message_place}}
+    </div>
+  </p>
+{%endif%}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+      {% for category_color, message in messages %}
+        <p class="error_text" style="color:{{ category_color }};width:500px;">{{ message }}</p>
+      {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+
+<p>
+  {% if csvdownload != "" %}
+    <div class='btn-csv-download'>
+      <a href="/result/<d1>/<file>/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
+      <a href="/result/<d1>/<file>/downloadlog"><button class='btn log-download'>Download Log File</button></a>
+    </div>
+  {% endif %}
+</p>
+
+{% if datacsvcsv != "" %}
+  <div id='table-responsive'>
+    <table>
+      <thead>
+        <tr>
+          {%for i in range(0, datacsvcsv[0] |length)%}
+            <th style="padding: 5px">{{ datacsvcsv[0][i] }}</th>
+          {%endfor%}
+        </tr>
+      </thead>
+      <tbody>
+        {%for r in range(1,  datacsvcsv|length)%}
+          <tr>
+            {%for i in range(0,  datacsvcsv[0] |length)%}
+              <td style="padding: 5px">{{ datacsvcsv[r][i] }}</td>
+            {%endfor%}
+          </tr>
+        {%endfor%}
+      </tbody> 
+    </table>
+  </div>
+{% endif %}
+</body>
+</html>
