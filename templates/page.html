@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Geo-Coding Tool | DATA.GOV.HK</title>
   
-  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/static/css/mainstyle.css" />
-  <link rel="icon" href="{{ path_prefix }}/static/img/logo_placeholder2.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/tools/geo-coding-tool/static/css/mainstyle.css" />
+  <link rel="shortcut icon" type="image/png" href="{{ path_prefix }}/favicon.png"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">// <![CDATA[
         function showPicture() {
-          var sourceOfPicture = "/static/img/loading2.gif";
+          var sourceOfPicture = "/tools/geo-coding-tool/static/img/loading2.gif";
           var img = document.getElementById('loading')
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
@@ -27,7 +27,6 @@
   <div class="headercontainer-addon">
     <div class="col-lg-6" id="header">
       
-      <img src="{{ path_prefix }}/static/img/logo_placeholder.png">
     </div>
     <div id="auth-info">
       {{ auth_info|e }}
