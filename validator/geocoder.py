@@ -9,9 +9,12 @@ def parse(x):
     print('1008a')
     if x != 'error1':
         print('1008bi')
-        pagetext = requests.get(x)
-        print('1008bii')
-        page = pagetext.text
+        try:
+            pagetext = requests.get(x)
+            print('1008bii')
+            page = pagetext.text
+        except Exception as e:
+            print(e)
         print('1008c')
         soup = bs(page, 'lxml')
         print('1008d')
