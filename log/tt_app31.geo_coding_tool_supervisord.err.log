@@ -1,0 +1,375 @@
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+supervisor: couldn't chdir to /bd-ogcdp/tools/geo_coding_tool: ENOENT
+supervisor: child process was not spawned
+[2021-05-25 17:31:07 +0800] [127182] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 17:31:07 +0800] [127182] [INFO] Listening at: http://127.0.0.1:15011 (127182)
+[2021-05-25 17:31:07 +0800] [127182] [INFO] Using worker: sync
+[2021-05-25 17:31:07 +0800] [127185] [INFO] Booting worker with pid: 127185
+[2021-05-25 17:31:07 +0800] [127186] [INFO] Booting worker with pid: 127186
+[2021-05-25 17:31:08 +0800] [127187] [INFO] Booting worker with pid: 127187
+[2021-05-25 17:31:08 +0800] [127193] [INFO] Booting worker with pid: 127193
+[2021-05-25 17:31:08 +0800] [127192] [INFO] Booting worker with pid: 127192
+[2021-05-25 18:02:03 +0800] [127182] [INFO] Handling signal: term
+[2021-05-25 18:02:03 +0800] [127187] [INFO] Worker exiting (pid: 127187)
+[2021-05-25 18:02:03 +0800] [127185] [INFO] Worker exiting (pid: 127185)
+[2021-05-25 18:02:03 +0800] [127193] [INFO] Worker exiting (pid: 127193)
+[2021-05-25 18:02:03 +0800] [127186] [INFO] Worker exiting (pid: 127186)
+[2021-05-25 18:02:03 +0800] [127192] [INFO] Worker exiting (pid: 127192)
+[2021-05-25 18:02:03 +0800] [127182] [INFO] Shutting down: Master
+[2021-05-25 18:02:05 +0800] [61992] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 18:02:05 +0800] [61992] [INFO] Listening at: http://127.0.0.1:15011 (61992)
+[2021-05-25 18:02:05 +0800] [61992] [INFO] Using worker: sync
+[2021-05-25 18:02:05 +0800] [61995] [INFO] Booting worker with pid: 61995
+[2021-05-25 18:02:05 +0800] [61996] [INFO] Booting worker with pid: 61996
+[2021-05-25 18:02:05 +0800] [61998] [INFO] Booting worker with pid: 61998
+[2021-05-25 18:02:05 +0800] [61997] [INFO] Booting worker with pid: 61997
+[2021-05-25 18:02:05 +0800] [61999] [INFO] Booting worker with pid: 61999
+[2021-05-25 18:02:53 +0800] [61992] [INFO] Handling signal: term
+[2021-05-25 18:02:53 +0800] [61997] [INFO] Worker exiting (pid: 61997)
+[2021-05-25 18:02:53 +0800] [61995] [INFO] Worker exiting (pid: 61995)
+[2021-05-25 18:02:53 +0800] [61998] [INFO] Worker exiting (pid: 61998)
+[2021-05-25 18:02:53 +0800] [61996] [INFO] Worker exiting (pid: 61996)
+[2021-05-25 18:02:53 +0800] [61999] [INFO] Worker exiting (pid: 61999)
+[2021-05-25 18:02:53 +0800] [61992] [INFO] Shutting down: Master
+[2021-05-25 18:02:54 +0800] [62165] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 18:02:54 +0800] [62165] [INFO] Listening at: http://127.0.0.1:15011 (62165)
+[2021-05-25 18:02:54 +0800] [62165] [INFO] Using worker: sync
+[2021-05-25 18:02:54 +0800] [62168] [INFO] Booting worker with pid: 62168
+[2021-05-25 18:02:54 +0800] [62170] [INFO] Booting worker with pid: 62170
+[2021-05-25 18:02:54 +0800] [62171] [INFO] Booting worker with pid: 62171
+[2021-05-25 18:02:54 +0800] [62173] [INFO] Booting worker with pid: 62173
+[2021-05-25 18:02:55 +0800] [62174] [INFO] Booting worker with pid: 62174
+[2021-05-25 18:05:04 +0800] [62165] [INFO] Handling signal: term
+[2021-05-25 18:05:04 +0800] [62168] [INFO] Worker exiting (pid: 62168)
+[2021-05-25 18:05:04 +0800] [62170] [INFO] Worker exiting (pid: 62170)
+[2021-05-25 18:05:04 +0800] [62171] [INFO] Worker exiting (pid: 62171)
+[2021-05-25 18:05:04 +0800] [62174] [INFO] Worker exiting (pid: 62174)
+[2021-05-25 18:05:04 +0800] [62173] [INFO] Worker exiting (pid: 62173)
+[2021-05-25 18:05:04 +0800] [62165] [INFO] Shutting down: Master
+[2021-05-25 18:05:06 +0800] [69037] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 18:05:06 +0800] [69037] [INFO] Listening at: http://127.0.0.1:15011 (69037)
+[2021-05-25 18:05:06 +0800] [69037] [INFO] Using worker: sync
+[2021-05-25 18:05:06 +0800] [69151] [INFO] Booting worker with pid: 69151
+[2021-05-25 18:05:06 +0800] [69174] [INFO] Booting worker with pid: 69174
+[2021-05-25 18:05:06 +0800] [69183] [INFO] Booting worker with pid: 69183
+[2021-05-25 18:05:06 +0800] [69184] [INFO] Booting worker with pid: 69184
+[2021-05-25 18:05:06 +0800] [69188] [INFO] Booting worker with pid: 69188
+[2021-05-25 18:07:04 +0800] [69037] [INFO] Handling signal: term
+[2021-05-25 18:07:04 +0800] [69151] [INFO] Worker exiting (pid: 69151)
+[2021-05-25 18:07:04 +0800] [69174] [INFO] Worker exiting (pid: 69174)
+[2021-05-25 18:07:04 +0800] [69184] [INFO] Worker exiting (pid: 69184)
+[2021-05-25 18:07:04 +0800] [69183] [INFO] Worker exiting (pid: 69183)
+[2021-05-25 18:07:04 +0800] [69188] [INFO] Worker exiting (pid: 69188)
+[2021-05-25 18:07:04 +0800] [69037] [INFO] Shutting down: Master
+[2021-05-25 18:07:06 +0800] [73795] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 18:07:06 +0800] [73795] [INFO] Listening at: http://127.0.0.1:15011 (73795)
+[2021-05-25 18:07:06 +0800] [73795] [INFO] Using worker: sync
+[2021-05-25 18:07:06 +0800] [73798] [INFO] Booting worker with pid: 73798
+[2021-05-25 18:07:06 +0800] [73799] [INFO] Booting worker with pid: 73799
+[2021-05-25 18:07:06 +0800] [73801] [INFO] Booting worker with pid: 73801
+[2021-05-25 18:07:06 +0800] [73805] [INFO] Booting worker with pid: 73805
+[2021-05-25 18:07:06 +0800] [73806] [INFO] Booting worker with pid: 73806
+[2021-05-25 18:11:26 +0800] [73795] [INFO] Handling signal: term
+[2021-05-25 18:11:26 +0800] [73798] [INFO] Worker exiting (pid: 73798)
+[2021-05-25 18:11:26 +0800] [73801] [INFO] Worker exiting (pid: 73801)
+[2021-05-25 18:11:26 +0800] [73799] [INFO] Worker exiting (pid: 73799)
+[2021-05-25 18:11:26 +0800] [73805] [INFO] Worker exiting (pid: 73805)
+[2021-05-25 18:11:26 +0800] [73806] [INFO] Worker exiting (pid: 73806)
+[2021-05-25 18:11:27 +0800] [73795] [INFO] Shutting down: Master
+[2021-05-25 18:11:28 +0800] [83099] [INFO] Starting gunicorn 19.9.0
+[2021-05-25 18:11:28 +0800] [83099] [INFO] Listening at: http://127.0.0.1:15011 (83099)
+[2021-05-25 18:11:28 +0800] [83099] [INFO] Using worker: sync
+[2021-05-25 18:11:28 +0800] [83102] [INFO] Booting worker with pid: 83102
+[2021-05-25 18:11:28 +0800] [83103] [INFO] Booting worker with pid: 83103
+[2021-05-25 18:11:28 +0800] [83106] [INFO] Booting worker with pid: 83106
+[2021-05-25 18:11:28 +0800] [83107] [INFO] Booting worker with pid: 83107
+[2021-05-25 18:11:28 +0800] [83108] [INFO] Booting worker with pid: 83108
+[2021-05-25 18:15:40 +0800] [83099] [CRITICAL] WORKER TIMEOUT (pid:83107)
+[2021-05-25 18:15:40 +0800] [83107] [INFO] Worker exiting (pid: 83107)
+[2021-05-25 18:15:41 +0800] [92293] [INFO] Booting worker with pid: 92293
+[2021-05-25 18:19:22 +0800] [83099] [CRITICAL] WORKER TIMEOUT (pid:83103)
+[2021-05-25 18:19:22 +0800] [83103] [INFO] Worker exiting (pid: 83103)
+[2021-05-25 18:19:23 +0800] [100472] [INFO] Booting worker with pid: 100472
+[2021-05-25 18:19:26 +0800] [83099] [CRITICAL] WORKER TIMEOUT (pid:83106)
+[2021-05-25 18:19:26 +0800] [83106] [INFO] Worker exiting (pid: 83106)
+[2021-05-25 18:19:27 +0800] [100484] [INFO] Booting worker with pid: 100484
+[2021-05-25 18:19:38 +0800] [83099] [CRITICAL] WORKER TIMEOUT (pid:83108)
+[2021-05-25 18:19:38 +0800] [83108] [INFO] Worker exiting (pid: 83108)
+[2021-05-25 18:19:39 +0800] [100487] [INFO] Booting worker with pid: 100487
+[2021-06-02 16:00:32 +0800] [83099] [CRITICAL] WORKER TIMEOUT (pid:100484)
+[2021-06-02 16:00:32 +0800] [100484] [INFO] Worker exiting (pid: 100484)
+[2021-06-02 16:00:33 +0800] [127009] [INFO] Booting worker with pid: 127009
+[2021-06-03 15:46:44 +0800] [83099] [INFO] Handling signal: term
+[2021-06-03 15:46:44 +0800] [100472] [INFO] Worker exiting (pid: 100472)
+[2021-06-03 15:46:44 +0800] [83102] [INFO] Worker exiting (pid: 83102)
+[2021-06-03 15:46:44 +0800] [100487] [INFO] Worker exiting (pid: 100487)
+[2021-06-03 15:46:44 +0800] [92293] [INFO] Worker exiting (pid: 92293)
+[2021-06-03 15:46:44 +0800] [127009] [INFO] Worker exiting (pid: 127009)
+[2021-06-03 15:46:44 +0800] [83099] [INFO] Shutting down: Master
+[2021-06-03 15:46:46 +0800] [79257] [INFO] Starting gunicorn 19.9.0
+[2021-06-03 15:46:46 +0800] [79257] [INFO] Listening at: http://127.0.0.1:15011 (79257)
+[2021-06-03 15:46:46 +0800] [79257] [INFO] Using worker: sync
+[2021-06-03 15:46:46 +0800] [79260] [INFO] Booting worker with pid: 79260
+[2021-06-03 15:46:46 +0800] [79261] [INFO] Booting worker with pid: 79261
+[2021-06-03 15:46:46 +0800] [79262] [INFO] Booting worker with pid: 79262
+[2021-06-03 15:46:46 +0800] [79263] [INFO] Booting worker with pid: 79263
+[2021-06-03 15:46:46 +0800] [79264] [INFO] Booting worker with pid: 79264
+[2021-06-03 16:28:52 +0800] [79257] [CRITICAL] WORKER TIMEOUT (pid:79261)
+[2021-06-03 16:28:52 +0800] [79261] [INFO] Worker exiting (pid: 79261)
+[2021-06-03 16:28:53 +0800] [30897] [INFO] Booting worker with pid: 30897
+[2021-06-04 15:24:45 +0800] [79257] [INFO] Handling signal: term
+[2021-06-04 15:24:45 +0800] [79260] [INFO] Worker exiting (pid: 79260)
+[2021-06-04 15:24:45 +0800] [79262] [INFO] Worker exiting (pid: 79262)
+[2021-06-04 15:24:45 +0800] [79263] [INFO] Worker exiting (pid: 79263)
+[2021-06-04 15:24:45 +0800] [79264] [INFO] Worker exiting (pid: 79264)
+[2021-06-04 15:24:45 +0800] [30897] [INFO] Worker exiting (pid: 30897)
+[2021-06-04 15:24:45 +0800] [79257] [INFO] Shutting down: Master
+[2021-06-04 15:24:47 +0800] [24692] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 15:24:47 +0800] [24692] [INFO] Listening at: http://127.0.0.1:15011 (24692)
+[2021-06-04 15:24:47 +0800] [24692] [INFO] Using worker: sync
+[2021-06-04 15:24:47 +0800] [24695] [INFO] Booting worker with pid: 24695
+[2021-06-04 15:24:47 +0800] [24696] [INFO] Booting worker with pid: 24696
+[2021-06-04 15:24:47 +0800] [24697] [INFO] Booting worker with pid: 24697
+[2021-06-04 15:24:47 +0800] [24698] [INFO] Booting worker with pid: 24698
+[2021-06-04 15:24:47 +0800] [24699] [INFO] Booting worker with pid: 24699
+[2021-06-04 17:34:24 +0800] [24692] [INFO] Handling signal: term
+[2021-06-04 17:34:24 +0800] [24696] [INFO] Worker exiting (pid: 24696)
+[2021-06-04 17:34:24 +0800] [24695] [INFO] Worker exiting (pid: 24695)
+[2021-06-04 17:34:24 +0800] [24699] [INFO] Worker exiting (pid: 24699)
+[2021-06-04 17:34:24 +0800] [24697] [INFO] Worker exiting (pid: 24697)
+[2021-06-04 17:34:24 +0800] [24698] [INFO] Worker exiting (pid: 24698)
+[2021-06-04 17:34:24 +0800] [24692] [INFO] Shutting down: Master
+[2021-06-04 17:34:25 +0800] [18058] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 17:34:25 +0800] [18058] [INFO] Listening at: http://127.0.0.1:15011 (18058)
+[2021-06-04 17:34:25 +0800] [18058] [INFO] Using worker: sync
+[2021-06-04 17:34:25 +0800] [18061] [INFO] Booting worker with pid: 18061
+[2021-06-04 17:34:25 +0800] [18062] [INFO] Booting worker with pid: 18062
+[2021-06-04 17:34:25 +0800] [18064] [INFO] Booting worker with pid: 18064
+[2021-06-04 17:34:25 +0800] [18066] [INFO] Booting worker with pid: 18066
+[2021-06-04 17:34:25 +0800] [18068] [INFO] Booting worker with pid: 18068
+[2021-06-04 17:36:14 +0800] [18058] [CRITICAL] WORKER TIMEOUT (pid:18068)
+[2021-06-04 17:36:14 +0800] [18068] [INFO] Worker exiting (pid: 18068)
+[2021-06-04 17:36:15 +0800] [22085] [INFO] Booting worker with pid: 22085
+[2021-06-04 17:40:55 +0800] [18058] [INFO] Handling signal: term
+[2021-06-04 17:40:55 +0800] [18064] [INFO] Worker exiting (pid: 18064)
+[2021-06-04 17:40:55 +0800] [18061] [INFO] Worker exiting (pid: 18061)
+[2021-06-04 17:40:55 +0800] [18062] [INFO] Worker exiting (pid: 18062)
+[2021-06-04 17:40:55 +0800] [18066] [INFO] Worker exiting (pid: 18066)
+[2021-06-04 17:40:55 +0800] [22085] [INFO] Worker exiting (pid: 22085)
+[2021-06-04 17:40:55 +0800] [18058] [INFO] Shutting down: Master
+[2021-06-04 17:40:56 +0800] [30998] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 17:40:56 +0800] [30998] [INFO] Listening at: http://127.0.0.1:15011 (30998)
+[2021-06-04 17:40:56 +0800] [30998] [INFO] Using worker: sync
+[2021-06-04 17:40:56 +0800] [31001] [INFO] Booting worker with pid: 31001
+[2021-06-04 17:40:56 +0800] [31002] [INFO] Booting worker with pid: 31002
+[2021-06-04 17:40:56 +0800] [31003] [INFO] Booting worker with pid: 31003
+[2021-06-04 17:40:56 +0800] [31004] [INFO] Booting worker with pid: 31004
+[2021-06-04 17:40:56 +0800] [31006] [INFO] Booting worker with pid: 31006
+[2021-06-04 17:43:07 +0800] [30998] [INFO] Handling signal: term
+[2021-06-04 17:43:07 +0800] [31001] [INFO] Worker exiting (pid: 31001)
+[2021-06-04 17:43:07 +0800] [31006] [INFO] Worker exiting (pid: 31006)
+[2021-06-04 17:43:07 +0800] [31002] [INFO] Worker exiting (pid: 31002)
+[2021-06-04 17:43:07 +0800] [31003] [INFO] Worker exiting (pid: 31003)
+[2021-06-04 17:43:07 +0800] [31004] [INFO] Worker exiting (pid: 31004)
+[2021-06-04 17:43:07 +0800] [30998] [INFO] Shutting down: Master
+[2021-06-04 17:43:09 +0800] [37027] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 17:43:09 +0800] [37027] [INFO] Listening at: http://127.0.0.1:15011 (37027)
+[2021-06-04 17:43:09 +0800] [37027] [INFO] Using worker: sync
+[2021-06-04 17:43:09 +0800] [37030] [INFO] Booting worker with pid: 37030
+[2021-06-04 17:43:09 +0800] [37031] [INFO] Booting worker with pid: 37031
+[2021-06-04 17:43:09 +0800] [37034] [INFO] Booting worker with pid: 37034
+[2021-06-04 17:43:09 +0800] [37038] [INFO] Booting worker with pid: 37038
+[2021-06-04 17:43:09 +0800] [37039] [INFO] Booting worker with pid: 37039
+[2021-06-04 17:44:28 +0800] [37027] [CRITICAL] WORKER TIMEOUT (pid:37034)
+[2021-06-04 17:44:28 +0800] [37034] [INFO] Worker exiting (pid: 37034)
+[2021-06-04 17:44:29 +0800] [39127] [INFO] Booting worker with pid: 39127
+[2021-06-04 17:55:44 +0800] [37027] [INFO] Handling signal: term
+[2021-06-04 17:55:44 +0800] [37030] [INFO] Worker exiting (pid: 37030)
+[2021-06-04 17:55:44 +0800] [37031] [INFO] Worker exiting (pid: 37031)
+[2021-06-04 17:55:44 +0800] [37038] [INFO] Worker exiting (pid: 37038)
+[2021-06-04 17:55:44 +0800] [37039] [INFO] Worker exiting (pid: 37039)
+[2021-06-04 17:55:44 +0800] [39127] [INFO] Worker exiting (pid: 39127)
+[2021-06-04 17:55:44 +0800] [37027] [INFO] Shutting down: Master
+[2021-06-04 17:55:45 +0800] [61021] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 17:55:45 +0800] [61021] [INFO] Listening at: http://127.0.0.1:15011 (61021)
+[2021-06-04 17:55:45 +0800] [61021] [INFO] Using worker: sync
+[2021-06-04 17:55:45 +0800] [61024] [INFO] Booting worker with pid: 61024
+[2021-06-04 17:55:45 +0800] [61026] [INFO] Booting worker with pid: 61026
+[2021-06-04 17:55:45 +0800] [61027] [INFO] Booting worker with pid: 61027
+[2021-06-04 17:55:45 +0800] [61029] [INFO] Booting worker with pid: 61029
+[2021-06-04 17:55:45 +0800] [61030] [INFO] Booting worker with pid: 61030
+[2021-06-04 17:56:22 +0800] [61021] [CRITICAL] WORKER TIMEOUT (pid:61027)
+[2021-06-04 17:56:22 +0800] [61027] [INFO] Worker exiting (pid: 61027)
+[2021-06-04 17:56:23 +0800] [63018] [INFO] Booting worker with pid: 63018
+[2021-06-04 18:10:57 +0800] [61021] [INFO] Handling signal: term
+[2021-06-04 18:10:57 +0800] [61024] [INFO] Worker exiting (pid: 61024)
+[2021-06-04 18:10:57 +0800] [61026] [INFO] Worker exiting (pid: 61026)
+[2021-06-04 18:10:57 +0800] [61029] [INFO] Worker exiting (pid: 61029)
+[2021-06-04 18:10:57 +0800] [61030] [INFO] Worker exiting (pid: 61030)
+[2021-06-04 18:10:57 +0800] [63018] [INFO] Worker exiting (pid: 63018)
+[2021-06-04 18:10:58 +0800] [61021] [INFO] Shutting down: Master
+[2021-06-04 18:10:59 +0800] [95451] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 18:10:59 +0800] [95451] [INFO] Listening at: http://127.0.0.1:15011 (95451)
+[2021-06-04 18:10:59 +0800] [95451] [INFO] Using worker: sync
+[2021-06-04 18:10:59 +0800] [95454] [INFO] Booting worker with pid: 95454
+[2021-06-04 18:10:59 +0800] [95455] [INFO] Booting worker with pid: 95455
+[2021-06-04 18:10:59 +0800] [95457] [INFO] Booting worker with pid: 95457
+[2021-06-04 18:10:59 +0800] [95459] [INFO] Booting worker with pid: 95459
+[2021-06-04 18:10:59 +0800] [95461] [INFO] Booting worker with pid: 95461
+[2021-06-04 18:25:56 +0800] [95451] [INFO] Handling signal: term
+[2021-06-04 18:25:56 +0800] [95455] [INFO] Worker exiting (pid: 95455)
+[2021-06-04 18:25:56 +0800] [95454] [INFO] Worker exiting (pid: 95454)
+[2021-06-04 18:25:56 +0800] [95457] [INFO] Worker exiting (pid: 95457)
+[2021-06-04 18:25:56 +0800] [95459] [INFO] Worker exiting (pid: 95459)
+[2021-06-04 18:25:56 +0800] [95461] [INFO] Worker exiting (pid: 95461)
+[2021-06-04 18:25:57 +0800] [95451] [INFO] Shutting down: Master
+[2021-06-04 18:25:58 +0800] [129156] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 18:25:58 +0800] [129156] [INFO] Listening at: http://127.0.0.1:15011 (129156)
+[2021-06-04 18:25:58 +0800] [129156] [INFO] Using worker: sync
+[2021-06-04 18:25:58 +0800] [129159] [INFO] Booting worker with pid: 129159
+[2021-06-04 18:25:58 +0800] [129161] [INFO] Booting worker with pid: 129161
+[2021-06-04 18:25:58 +0800] [129163] [INFO] Booting worker with pid: 129163
+[2021-06-04 18:25:58 +0800] [129165] [INFO] Booting worker with pid: 129165
+[2021-06-04 18:25:58 +0800] [129167] [INFO] Booting worker with pid: 129167
+[2021-06-04 18:30:13 +0800] [129156] [INFO] Handling signal: term
+[2021-06-04 18:30:13 +0800] [129161] [INFO] Worker exiting (pid: 129161)
+[2021-06-04 18:30:13 +0800] [129163] [INFO] Worker exiting (pid: 129163)
+[2021-06-04 18:30:13 +0800] [129165] [INFO] Worker exiting (pid: 129165)
+[2021-06-04 18:30:13 +0800] [129167] [INFO] Worker exiting (pid: 129167)
+[2021-06-04 18:30:13 +0800] [129159] [INFO] Worker exiting (pid: 129159)
+[2021-06-04 18:30:13 +0800] [129156] [INFO] Shutting down: Master
+[2021-06-04 18:30:15 +0800] [9988] [INFO] Starting gunicorn 19.9.0
+[2021-06-04 18:30:15 +0800] [9988] [INFO] Listening at: http://127.0.0.1:15011 (9988)
+[2021-06-04 18:30:15 +0800] [9988] [INFO] Using worker: sync
+[2021-06-04 18:30:15 +0800] [9993] [INFO] Booting worker with pid: 9993
+[2021-06-04 18:30:15 +0800] [9994] [INFO] Booting worker with pid: 9994
+[2021-06-04 18:30:15 +0800] [9996] [INFO] Booting worker with pid: 9996
+[2021-06-04 18:30:15 +0800] [9995] [INFO] Booting worker with pid: 9995
+[2021-06-04 18:30:15 +0800] [9998] [INFO] Booting worker with pid: 9998
+[2021-06-08 10:23:38 +0800] [9988] [INFO] Handling signal: term
+[2021-06-08 10:23:38 +0800] [9995] [INFO] Worker exiting (pid: 9995)
+[2021-06-08 10:23:38 +0800] [9993] [INFO] Worker exiting (pid: 9993)
+[2021-06-08 10:23:38 +0800] [9998] [INFO] Worker exiting (pid: 9998)
+[2021-06-08 10:23:38 +0800] [9994] [INFO] Worker exiting (pid: 9994)
+[2021-06-08 10:23:38 +0800] [9996] [INFO] Worker exiting (pid: 9996)
+[2021-06-08 10:23:39 +0800] [9988] [INFO] Shutting down: Master
+[2021-06-08 10:23:40 +0800] [2710] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 10:23:40 +0800] [2710] [INFO] Listening at: http://127.0.0.1:15011 (2710)
+[2021-06-08 10:23:40 +0800] [2710] [INFO] Using worker: sync
+[2021-06-08 10:23:40 +0800] [2713] [INFO] Booting worker with pid: 2713
+[2021-06-08 10:23:40 +0800] [2714] [INFO] Booting worker with pid: 2714
+[2021-06-08 10:23:40 +0800] [2717] [INFO] Booting worker with pid: 2717
+[2021-06-08 10:23:40 +0800] [2718] [INFO] Booting worker with pid: 2718
+[2021-06-08 10:23:40 +0800] [2720] [INFO] Booting worker with pid: 2720
+[2021-06-08 10:29:43 +0800] [2710] [INFO] Handling signal: term
+[2021-06-08 10:29:43 +0800] [2713] [INFO] Worker exiting (pid: 2713)
+[2021-06-08 10:29:43 +0800] [2717] [INFO] Worker exiting (pid: 2717)
+[2021-06-08 10:29:43 +0800] [2720] [INFO] Worker exiting (pid: 2720)
+[2021-06-08 10:29:43 +0800] [2714] [INFO] Worker exiting (pid: 2714)
+[2021-06-08 10:29:43 +0800] [2718] [INFO] Worker exiting (pid: 2718)
+[2021-06-08 10:29:43 +0800] [2710] [INFO] Shutting down: Master
+[2021-06-08 10:29:45 +0800] [15089] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 10:29:45 +0800] [15089] [INFO] Listening at: http://127.0.0.1:15011 (15089)
+[2021-06-08 10:29:45 +0800] [15089] [INFO] Using worker: sync
+[2021-06-08 10:29:45 +0800] [15092] [INFO] Booting worker with pid: 15092
+[2021-06-08 10:29:45 +0800] [15093] [INFO] Booting worker with pid: 15093
+[2021-06-08 10:29:45 +0800] [15096] [INFO] Booting worker with pid: 15096
+[2021-06-08 10:29:45 +0800] [15098] [INFO] Booting worker with pid: 15098
+[2021-06-08 10:29:45 +0800] [15099] [INFO] Booting worker with pid: 15099
+[2021-06-08 10:44:04 +0800] [15089] [INFO] Handling signal: term
+[2021-06-08 10:44:04 +0800] [15093] [INFO] Worker exiting (pid: 15093)
+[2021-06-08 10:44:04 +0800] [15096] [INFO] Worker exiting (pid: 15096)
+[2021-06-08 10:44:04 +0800] [15092] [INFO] Worker exiting (pid: 15092)
+[2021-06-08 10:44:04 +0800] [15098] [INFO] Worker exiting (pid: 15098)
+[2021-06-08 10:44:04 +0800] [15099] [INFO] Worker exiting (pid: 15099)
+[2021-06-08 10:44:04 +0800] [15089] [INFO] Shutting down: Master
+[2021-06-08 10:44:05 +0800] [45867] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 10:44:05 +0800] [45867] [INFO] Listening at: http://127.0.0.1:15011 (45867)
+[2021-06-08 10:44:05 +0800] [45867] [INFO] Using worker: sync
+[2021-06-08 10:44:05 +0800] [45871] [INFO] Booting worker with pid: 45871
+[2021-06-08 10:44:05 +0800] [45876] [INFO] Booting worker with pid: 45876
+[2021-06-08 10:44:05 +0800] [45880] [INFO] Booting worker with pid: 45880
+[2021-06-08 10:44:05 +0800] [45881] [INFO] Booting worker with pid: 45881
+[2021-06-08 10:44:05 +0800] [45883] [INFO] Booting worker with pid: 45883
+[2021-06-08 10:46:10 +0800] [45867] [CRITICAL] WORKER TIMEOUT (pid:45880)
+[2021-06-08 10:46:10 +0800] [45880] [INFO] Worker exiting (pid: 45880)
+[2021-06-08 10:46:11 +0800] [49906] [INFO] Booting worker with pid: 49906
+[2021-06-08 10:57:48 +0800] [45867] [INFO] Handling signal: term
+[2021-06-08 10:57:48 +0800] [45876] [INFO] Worker exiting (pid: 45876)
+[2021-06-08 10:57:48 +0800] [45871] [INFO] Worker exiting (pid: 45871)
+[2021-06-08 10:57:48 +0800] [45881] [INFO] Worker exiting (pid: 45881)
+[2021-06-08 10:57:48 +0800] [45883] [INFO] Worker exiting (pid: 45883)
+[2021-06-08 10:57:48 +0800] [49906] [INFO] Worker exiting (pid: 49906)
+[2021-06-08 10:57:48 +0800] [45867] [INFO] Shutting down: Master
+[2021-06-08 10:57:50 +0800] [72265] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 10:57:50 +0800] [72265] [INFO] Listening at: http://127.0.0.1:15011 (72265)
+[2021-06-08 10:57:50 +0800] [72265] [INFO] Using worker: sync
+[2021-06-08 10:57:50 +0800] [72268] [INFO] Booting worker with pid: 72268
+[2021-06-08 10:57:50 +0800] [72269] [INFO] Booting worker with pid: 72269
+[2021-06-08 10:57:50 +0800] [72270] [INFO] Booting worker with pid: 72270
+[2021-06-08 10:57:50 +0800] [72271] [INFO] Booting worker with pid: 72271
+[2021-06-08 10:57:50 +0800] [72272] [INFO] Booting worker with pid: 72272
+[2021-06-08 11:10:37 +0800] [72265] [INFO] Handling signal: term
+[2021-06-08 11:10:37 +0800] [72270] [INFO] Worker exiting (pid: 72270)
+[2021-06-08 11:10:37 +0800] [72268] [INFO] Worker exiting (pid: 72268)
+[2021-06-08 11:10:37 +0800] [72271] [INFO] Worker exiting (pid: 72271)
+[2021-06-08 11:10:37 +0800] [72269] [INFO] Worker exiting (pid: 72269)
+[2021-06-08 11:10:37 +0800] [72272] [INFO] Worker exiting (pid: 72272)
+[2021-06-08 11:10:38 +0800] [72265] [INFO] Shutting down: Master
+[2021-06-08 11:10:39 +0800] [99243] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 11:10:39 +0800] [99243] [INFO] Listening at: http://127.0.0.1:15011 (99243)
+[2021-06-08 11:10:39 +0800] [99243] [INFO] Using worker: sync
+[2021-06-08 11:10:39 +0800] [99246] [INFO] Booting worker with pid: 99246
+[2021-06-08 11:10:39 +0800] [99247] [INFO] Booting worker with pid: 99247
+[2021-06-08 11:10:39 +0800] [99250] [INFO] Booting worker with pid: 99250
+[2021-06-08 11:10:39 +0800] [99251] [INFO] Booting worker with pid: 99251
+[2021-06-08 11:10:39 +0800] [99253] [INFO] Booting worker with pid: 99253
+[2021-06-08 11:31:49 +0800] [99243] [INFO] Handling signal: term
+[2021-06-08 11:31:49 +0800] [99246] [INFO] Worker exiting (pid: 99246)
+[2021-06-08 11:31:49 +0800] [99250] [INFO] Worker exiting (pid: 99250)
+[2021-06-08 11:31:49 +0800] [99247] [INFO] Worker exiting (pid: 99247)
+[2021-06-08 11:31:49 +0800] [99253] [INFO] Worker exiting (pid: 99253)
+[2021-06-08 11:31:49 +0800] [99251] [INFO] Worker exiting (pid: 99251)
+[2021-06-08 11:31:50 +0800] [99243] [INFO] Shutting down: Master
+[2021-06-08 11:31:51 +0800] [10452] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 11:31:51 +0800] [10452] [INFO] Listening at: http://127.0.0.1:15011 (10452)
+[2021-06-08 11:31:51 +0800] [10452] [INFO] Using worker: sync
+[2021-06-08 11:31:51 +0800] [10455] [INFO] Booting worker with pid: 10455
+[2021-06-08 11:31:51 +0800] [10457] [INFO] Booting worker with pid: 10457
+[2021-06-08 11:31:51 +0800] [10458] [INFO] Booting worker with pid: 10458
+[2021-06-08 11:31:51 +0800] [10460] [INFO] Booting worker with pid: 10460
+[2021-06-08 11:31:51 +0800] [10462] [INFO] Booting worker with pid: 10462
+[2021-06-08 11:35:46 +0800] [10452] [INFO] Handling signal: term
+[2021-06-08 11:35:46 +0800] [10458] [INFO] Worker exiting (pid: 10458)
+[2021-06-08 11:35:46 +0800] [10455] [INFO] Worker exiting (pid: 10455)
+[2021-06-08 11:35:46 +0800] [10457] [INFO] Worker exiting (pid: 10457)
+[2021-06-08 11:35:46 +0800] [10460] [INFO] Worker exiting (pid: 10460)
+[2021-06-08 11:35:46 +0800] [10462] [INFO] Worker exiting (pid: 10462)
+[2021-06-08 11:35:46 +0800] [10452] [INFO] Shutting down: Master
+[2021-06-08 11:35:47 +0800] [18358] [INFO] Starting gunicorn 19.9.0
+[2021-06-08 11:35:47 +0800] [18358] [INFO] Listening at: http://127.0.0.1:15011 (18358)
+[2021-06-08 11:35:47 +0800] [18358] [INFO] Using worker: sync
+[2021-06-08 11:35:47 +0800] [18361] [INFO] Booting worker with pid: 18361
+[2021-06-08 11:35:47 +0800] [18362] [INFO] Booting worker with pid: 18362
+[2021-06-08 11:35:47 +0800] [18363] [INFO] Booting worker with pid: 18363
+[2021-06-08 11:35:47 +0800] [18367] [INFO] Booting worker with pid: 18367
+[2021-06-08 11:35:47 +0800] [18370] [INFO] Booting worker with pid: 18370
+[2021-06-08 11:41:24 +0800] [18358] [CRITICAL] WORKER TIMEOUT (pid:18367)
+[2021-06-08 11:41:24 +0800] [18367] [INFO] Worker exiting (pid: 18367)
+[2021-06-08 11:41:25 +0800] [30456] [INFO] Booting worker with pid: 30456
+[2021-06-08 12:24:01 +0800] [18358] [CRITICAL] WORKER TIMEOUT (pid:18361)
+[2021-06-08 12:24:01 +0800] [18361] [INFO] Worker exiting (pid: 18361)
+[2021-06-08 12:24:02 +0800] [114485] [INFO] Booting worker with pid: 114485
