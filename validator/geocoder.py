@@ -8,8 +8,10 @@ def parse(x):
     finallist = []
     print('1008a')
     if x != 'error1':
-        print('1008b')
-        page = requests.get(x).text
+        print('1008bi')
+        pagetext = requests.get(x)
+        print('1008bii')
+        page = pagetext.text
         print('1008c')
         soup = bs(page, 'lxml')
         print('1008d')
