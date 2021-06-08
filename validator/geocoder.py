@@ -3,15 +3,22 @@ from bs4 import BeautifulSoup as bs
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 import datetime
+from psi.config import config_loader
 
 def parse(x):
     finallist = []
     print('1008a')
     if x != 'error1':
         print(datetime.datetime.now(),'1008bi')
+        config  = config_loader.config_loader()
+        proxies = config.get_proxy_config()
         try:
             print('x: ',x)
-            pagetext = requests.get(x)
+            pagetext = requests.get(x,
+                                timeout=20,
+                                stream=True,
+                                proxies=proxies,
+                                headers={'User-Agent': 'DATA.GOV.HK Data Provider Portal'})
             print('pagetext: ', pagetext)
             print('1008bii')
             page = pagetext.text
