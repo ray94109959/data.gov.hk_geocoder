@@ -2,42 +2,43 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
-
+import datetime
 
 def parse(x):
     finallist = []
     print('1008a')
     if x != 'error1':
-        print('1008bi')
+        print(datetime.datetime.now(),'1008bi')
         try:
             pagetext = requests.get(x)
             print('1008bii')
             page = pagetext.text
+            print('1008c')
+            soup = bs(page, 'lxml')
+            print('1008d')
+            data = soup.find_all('engpremisesaddress', limit=11)
+            data1 = soup.find_all('chipremisesaddress', limit=11)
+            data2 = soup.find_all('geoaddress', limit=11)
+            data3 = soup.find_all('latitude', limit=11)
+            data4 = soup.find_all('longitude', limit=11)
+            data5 = soup.find_all('validationinformation', limit=11)
+            print('1008e')
+            if data == []:
+                finallist.append(["Error", "2"])
+            else:
+                for i in range(len(data)):
+                    rank = data[i].get_text(', ')
+                    rank1 = data1[i].get_text(',')
+                    rank2 = data2[i].get_text(',')
+                    rank3 = data3[i].get_text(',')
+                    rank4 = data4[i].get_text(',')
+                    rank5 = data5[i].get_text(',')
+                    resultlist = [rank, rank1, rank2, rank3, rank4, rank5]
+                    finallist.append(resultlist)
+            print('1008f')
         except Exception as e:
             print(e)
-        print('1008c')
-        soup = bs(page, 'lxml')
-        print('1008d')
-        data = soup.find_all('engpremisesaddress', limit=11)
-        data1 = soup.find_all('chipremisesaddress', limit=11)
-        data2 = soup.find_all('geoaddress', limit=11)
-        data3 = soup.find_all('latitude', limit=11)
-        data4 = soup.find_all('longitude', limit=11)
-        data5 = soup.find_all('validationinformation', limit=11)
-        print('1008e')
-        if data == []:
-            finallist.append(["Error", "2"])
-        else:
-            for i in range(len(data)):
-                rank = data[i].get_text(', ')
-                rank1 = data1[i].get_text(',')
-                rank2 = data2[i].get_text(',')
-                rank3 = data3[i].get_text(',')
-                rank4 = data4[i].get_text(',')
-                rank5 = data5[i].get_text(',')
-                resultlist = [rank, rank1, rank2, rank3, rank4, rank5]
-                finallist.append(resultlist)
-        print('1008f')
+        
             
     else:
         print('1008bi')
@@ -48,7 +49,7 @@ def parse(x):
 
 def findaddress(addressdata, logfilepathname):       
     # if __name__ == '__main__':
-        print('1007')
+        print(datetime.datetime.now(),'1007')
         executor = ThreadPoolExecutor(max_workers=5)
         global latlist
         global lnglist
