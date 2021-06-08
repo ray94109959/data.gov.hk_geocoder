@@ -12,6 +12,7 @@ def parse(x):
         try:
             print('x: ',x)
             pagetext = requests.get(x)
+            print('pagetext: ', pagetext)
             print('1008bii')
             page = pagetext.text
             print('1008c')
