@@ -10,6 +10,7 @@ def parse(x):
     if x != 'error1':
         print(datetime.datetime.now(),'1008bi')
         try:
+            print('x: ',x)
             pagetext = requests.get(x)
             print('1008bii')
             page = pagetext.text
