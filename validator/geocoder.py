@@ -44,7 +44,7 @@ def parse(x):
     else:
         print('1008bi - elsed')
         finallist.append(["Error", "1"])
-    #   print('x')
+    print(finallist)
     return(finallist)
 
 
@@ -76,7 +76,7 @@ def findaddress(addressdata, logfilepathname):
         # print(urllist)
         print('1008')
         result = executor.map(parse, urllist)
-        print('1009a')
+        print('1009a -- result: ', result)
         finals = []
 
         for value in result:
