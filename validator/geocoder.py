@@ -37,11 +37,10 @@ def parse(x):
                     finallist.append(resultlist)
             print('1008f')
         except Exception as e:
+            print('1008bii errorrrrrr')
             print(e)
-        
-            
     else:
-        print('1008bi')
+        print('1008bi - elsed')
         finallist.append(["Error", "1"])
     #   print('x')
     return(finallist)
@@ -75,12 +74,13 @@ def findaddress(addressdata, logfilepathname):
         # print(urllist)
         print('1008')
         result = executor.map(parse, urllist)
+        print('1009a')
         finals = []
 
         for value in result:
             finals.append(value)
         # print(finals)
-        print('1009')
+        print('1009b')
         
         for l in range(len(finals)):
                 if len(finals[l]) > 1:
