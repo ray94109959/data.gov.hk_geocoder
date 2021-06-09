@@ -19,24 +19,28 @@
           img.style.display = "block";
         } 
 // ]]></script>
+
 <script type="text/javascript">// <![CDATA[
   function validate(el) {
     var maxfilesize = 1024 * 1024 * 2,  // 2 Mb
         filesize    = el.files[0].size,
+        pfilesize   = parseFloat((filesize/(1024*1024))).toPrecision(3)
         filename    = el.files[0].name,
         warningel   = document.getElementById( 'lbError' );
         successel   = document.getElementById( 'lbSuccess' );
 
     if ( filesize > maxfilesize )
     {
-      warningel.innerHTML = "File too large(MB): " + filesize/(1024*1024) + ". Maximum size(MB): " + maxfilesize/(1024*1024);
+      warningel.innerHTML = "File too large(MB): " + '<b>' +pfilesize+ ' MB' + '</b>'  + '<br>' + "Maximum size(MB): " + '<b>'+ maxfilesize/(1024*1024) + ' MB' + '</b>';
       successel.innerHTML = '';
+      document.getElementById('btntest').disabled = true;
       return false;
     }
     else
     {
       warningel.innerHTML = '';
-      successel.innerHTML = 'Upload Successful: ' + filename;
+      successel.innerHTML = 'Upload File Name: ' +  '<b>' + filename +  '</b>' +'<br>' +'Upload File Size:' +  '<b>'  + pfilesize+ ' MB' +  '</b>' ;
+      document.getElementById('btntest').disabled = false;
       return true;
     }   
   }
@@ -70,7 +74,7 @@
                 
               </div>  
             </div>
-            <div id='lbError' class='msg-failed'></div>
+            <div id='lbError'></div>
             <div id='lbSuccess'></div>
             
             <div class="form-group">

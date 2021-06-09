@@ -180,6 +180,12 @@ body {
     color: green;
 }
 
+#lbError{
+    display: flexbox;
+    text-align: center;
+    color: red;
+}
+
 .msg-failed{
     color: red
 }
