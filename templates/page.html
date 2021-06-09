@@ -19,7 +19,28 @@
           img.style.display = "block";
         } 
 // ]]></script>
+<script type="text/javascript">// <![CDATA[
+  function validate(el) {
+    var maxfilesize = 1024 * 1024 * 2,  // 2 Mb
+        filesize    = el.files[0].size,
+        filename    = el.files[0].name,
+        warningel   = document.getElementById( 'lbError' );
+        successel   = document.getElementById( 'lbSuccess' );
 
+    if ( filesize > maxfilesize )
+    {
+      warningel.innerHTML = "File too large(MB): " + filesize/(1024*1024) + ". Maximum size(MB): " + maxfilesize/(1024*1024);
+      successel.innerHTML = '';
+      return false;
+    }
+    else
+    {
+      warningel.innerHTML = '';
+      successel.innerHTML = 'Upload Successful: ' + filename;
+      return true;
+    }   
+  }
+// ]]></script>
 </head>
 
 <body>
@@ -49,7 +70,8 @@
                 
               </div>  
             </div>
-            <h5>Upload File should be less than 2MB</h5>
+            <div id='lbError' class='msg-failed'></div>
+            <div id='lbSuccess'></div>
             
             <div class="form-group">
               <div class="input-group2">

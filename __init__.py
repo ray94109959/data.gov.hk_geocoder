@@ -18,7 +18,7 @@ import geocoder
 
 app = Flask(__name__)
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.secret_key = '123456789'
 # app.run(debug=True) 
 
