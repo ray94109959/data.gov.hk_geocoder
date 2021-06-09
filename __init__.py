@@ -17,7 +17,7 @@ sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
 import geocoder
 
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.secret_key = '123456789'
 # app.run(debug=True) 
@@ -196,7 +196,7 @@ def front():
                 with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
                     csv_reader = csv.reader(csv_file, delimiter=',')
                     csv_reader = list(csv_reader)
-                print('1012')
+                print(datetime.datetime.now(),'1012')
                 return render_template("page.html",
                                     auth_info=auth_info,
                                     path_prefix=path_prefix,
