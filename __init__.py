@@ -86,6 +86,7 @@ def front():
         changehex()
         auth_info = 'Internet'
         path_prefix = ''
+        # autocrlf = false
         # if not request:
         #     return render_template('page.html',
         #                         submitbuttondisplay = 'show',
