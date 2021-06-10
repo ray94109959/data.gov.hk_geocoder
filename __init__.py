@@ -118,8 +118,8 @@ def front():
                                 message_failed = 'Please enter Address Field Name, it cannot be empty.'
                                 )
         
-
-        if allowed_file(data_file.filename):
+        
+        if data_file and allowed_file(data_file.filename):
             try:
                 print('1004')
                 data_file.seek(0, os.SEEK_END)
