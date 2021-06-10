@@ -29,6 +29,12 @@
         warningel   = document.getElementById( 'lbError' );
         successel   = document.getElementById( 'lbSuccess' );
 
+    if (filesize == 0){
+      document.getElementById('btntest').disabled = true;
+    } elif (filesize > 0) {
+      document.getElementById('btntest').disabled = false;
+    }
+
     if ( filesize > maxfilesize )
     {
       warningel.innerHTML = "File too large(MB): " + '<b>' +pfilesize+ ' MB' + '</b>'  + '<br>' + "Maximum size(MB): " + '<b>'+ maxfilesize/(1024*1024) + ' MB' + '</b>';
@@ -42,7 +48,9 @@
       successel.innerHTML = 'Upload File Name: ' +  '<b>' + filename +  '</b>' +'<br>' +'Upload File Size:' +  '<b>'  + pfilesize+ ' MB' +  '</b>' ;
       document.getElementById('btntest').disabled = false;
       return true;
-    }   
+    }
+
+       
   }
 // ]]></script>
 </head>

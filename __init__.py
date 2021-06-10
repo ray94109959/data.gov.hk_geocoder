@@ -9,6 +9,7 @@ from werkzeug.utils import secure_filename
 import pandas as pd
 import csv
 import os
+import urllib
 from uuid import uuid4
 import datetime
 
@@ -137,7 +138,8 @@ def front():
                                     datacsvcsv = ''
                                     )
                 filename = secure_filename(data_file.filename)
-                urlfilename = filename[:-4]
+                urlfilename = urllib.urlencode(filename[:-4])
+                print(urlfilename)
                 front.urlfilename = urlfilename
                 logfilename = ''.join([urlfilename, '-logfile.csv'])
                 front.logfilename = logfilename
@@ -205,9 +207,9 @@ def front():
                                     csvdownload = editedfilename,
                                     datacsvcsv=csv_reader,
                                     d1=d1,
-                                    file=front.filename,
+                                    file=urlfilename,
                                     message = 'Success, download updated csv file and log file here',
-                                    message_file= "Uploaded file: {}".format(front.filename),
+                                    message_file= "Uploaded file: {}".format(urlfilename),
                                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
                                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
                                     )
@@ -235,7 +237,7 @@ def front():
                                 message_failed = 'Please upload a csv file')
 
 
-@app.route('/result/<d1>/<file>/downloadcsv', methods=['GET', 'POST'])
+@app.route('/result/downloadcsv', methods=['GET', 'POST'])
 def downloadcsv(d1,file):
     if request.method == 'GET':
         resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
@@ -243,7 +245,7 @@ def downloadcsv(d1,file):
         resp.headers["Content-Type"] = "text/csv"
         return resp
 
-@app.route('/result/<d1>/<file>/downloadlog', methods=['GET', 'POST'])
+@app.route('/result/downloadlog', methods=['GET', 'POST'])
 def downloadlog(d1,file):
     if request.method == 'GET':
         resp = make_response(send_file(front.logsavepath))
