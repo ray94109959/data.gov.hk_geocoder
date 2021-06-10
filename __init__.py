@@ -13,7 +13,7 @@ from uuid import uuid4
 import datetime
 
 sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
-# import validate_data_json
+# import validate_data_json #
 import geocoder
 
 app = Flask(__name__)
