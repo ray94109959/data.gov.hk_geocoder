@@ -146,10 +146,10 @@ def front():
                                     datacsvcsv = ''
                                     )
                 filename = secure_filename(data_file.filename)
-                # urlfilename = filename[:-4]
-                urlfilenamet = filename[:-4]
-                urlfilenametr = urlfilenamet.replace(' ', '_')
-                urlfilename = urlfilenametr.translate({ord(c): "" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=+"})
+                urlfilename = filename[:-4]
+                # urlfilenamet = filename[:-4]
+                # urlfilenametr = urlfilenamet.replace(' ', '_')
+                # urlfilename = urlfilenametr.translate({ord(c): "" for c in "!@#$%^&*()[]{};:,./<>?\|`~-=+"})
                 front.urlfilename = urlfilename
                 logfilename = ''.join([urlfilename, '-logfile.csv'])
                 front.logfilename = logfilename
@@ -220,7 +220,7 @@ def front():
                                     d1=d1,
                                     file=urlfilename,
                                     message = 'Success, download updated csv file and log file here',
-                                    message_file= "Uploaded file: {}".format(urlfilename),
+                                    message_file= "Uploaded file: {}".format(front.filename),
                                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
                                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
                                     )
