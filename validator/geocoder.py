@@ -47,6 +47,7 @@ def parse(x):
             print('1008f')
         except Exception as e:
             print('1008bii errorrrrrr')
+            finallist.append(["Error", "3"])
             print(e)
     else:
         print('1008bi - elsed')
@@ -278,6 +279,29 @@ def findaddress(addressdata, logfilepathname):
 
                         with open(logfilepathname, 'a', encoding='utf-8-sig', newline='') as ffile:
                             dp.to_csv(ffile, header=False, index=False)
+
+                    elif finals[l][0][0] == "Error" and finals[l][0][1] == "3":
+                        # print('2: Error - Address not found in ADI Tool')
+                        print('1010')
+                        latlist.append("Error")
+                        lnglist.append("Error")
+
+                        dataframelist = {
+                            "ID" : l+1,
+                            'Address Name' : addressdata[l],
+                            'Score': ["None"],
+                            'Remark': ["ADI Request Timeout"],
+                            'Latitude' : ["None"],
+                            'Longitude' : ["None"],
+                            'Geoaddress' : ["None"],
+                            'English Address Returned by ALS' : ["None"],
+                            'Chinese Address Returned by ALS' : ["None"]
+                            }
+                        dp = pd.DataFrame(dataframelist)
+
+                        with open(logfilepathname, 'a', encoding='utf-8-sig', newline='') as ffile:
+                            dp.to_csv(ffile, header=False, index=False)
+
                     else:
                         # print('5: Highest Score Address Found')
                         print('1010')
@@ -312,4 +336,5 @@ def findaddress(addressdata, logfilepathname):
                         dp = pd.DataFrame(dataframelist)
                         with open(logfilepathname, 'a', encoding='utf-8-sig', newline='') as f:
                             dp.to_csv(f, header=False, index=False)
+                    
         print(latlist, lnglist)
