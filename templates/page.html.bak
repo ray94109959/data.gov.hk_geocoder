@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+<script>
+function disableBtn() {
+    document.getElementById("btntest").disabled = true;
+}
+</script>
 
 <script type="text/javascript">// <![CDATA[
         function showPicture() {
@@ -21,11 +25,7 @@
           img.style.display = "block";
         } 
 // ]]></script>
-<script>
-function disableBtn() {
-    document.getElementById("btntest").disabled = true;
-}
-</script>
+
 <script type="text/javascript">// <![CDATA[
   function validate(el) {
     var maxfilesize = 1024 * 1024 * 2,  // 2 Mb
@@ -34,7 +34,6 @@ function disableBtn() {
         filename    = el.files[0].name,
         warningel   = document.getElementById( 'lbError' );
         successel   = document.getElementById( 'lbSuccess' );
-
 
     if ( filesize > maxfilesize )
     {
@@ -49,7 +48,9 @@ function disableBtn() {
       successel.innerHTML = 'Upload File Name: ' +  '<b>' + filename +  '</b>' +'<br>' +'Upload File Size:' +  '<b>'  + pfilesize+ ' MB' +  '</b>' ;
       document.getElementById('btntest').disabled = false;
       return true;
-    }   
+    }
+
+       
   }
 // ]]></script>
 </head>
@@ -83,6 +84,7 @@ function disableBtn() {
             </div>
             <div id='lbError'></div>
             <div id='lbSuccess'></div>
+            
             <div class="form-group">
               <div class="input-group2">
                 <div class="col-lg-10">
@@ -95,9 +97,7 @@ function disableBtn() {
             </div>
           </form>
           <div class="input-group-btn">
-            <div class='tryhidetest'>
-              <button class="btn btn-primary" id='btntest' type="submit" form="upload-form", value='submit',.disabled=false, onclick="showPicture()">Submit</button>
-            </div>
+              <button class="btn btn-primary" type="submit" id='btntest' form="upload-form", value='submit', onclick="showPicture()">Submit</button>
           </div>
         </div>
       </div>
