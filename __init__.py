@@ -86,7 +86,6 @@ def front():
         changehex()
         auth_info = 'Internet'
         path_prefix = ''
-        # print(os.stat(request.files['data_file']).st_size)
         # if not request:
         #     return render_template('page.html',
         #                         submitbuttondisplay = 'show',
