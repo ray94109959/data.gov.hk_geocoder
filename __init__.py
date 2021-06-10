@@ -205,7 +205,7 @@ def front():
                                     csvdownload = editedfilename,
                                     datacsvcsv=csv_reader,
                                     d1=d1,
-                                    file=urlfilename,
+                                    file=front.filename,
                                     message = 'Success, download updated csv file and log file here',
                                     message_file= "Uploaded file: {}".format(front.filename),
                                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
