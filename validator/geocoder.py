@@ -4,6 +4,7 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 import datetime
 from psi.config import config_loader
+import sys
 
 def parse(x):
     finallist = []
@@ -45,10 +46,12 @@ def parse(x):
                     resultlist = [rank, rank1, rank2, rank3, rank4, rank5]
                     finallist.append(resultlist)
             print('1008f')
-        except Exception as e:
+        except Exception as error:
             print('1008bii errorrrrrr')
             finallist.append(["Error", "3"])
-            print(e)
+            print('str(error): ',str(error))
+        except:
+            print('except sys.excinfo: ',sys.exc_info()[0])
     else:
         print('1008bi - elsed')
         finallist.append(["Error", "1"])
