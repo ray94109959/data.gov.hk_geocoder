@@ -88,15 +88,15 @@ def front():
         auth_info = 'Internet'
         path_prefix = ''
         # print(os.stat(request.files['data_file']).st_size)
-        if not request:
-            return render_template('page.html',
-                                submitbuttondisplay = 'show',
-                                submitbuttonpressed = '',
-                                datacsvcsv = '',
-                                auth_info=auth_info,
-                                path_prefix=path_prefix,
-                                csvdownload = "",
-                                message_failed = 'Please upload a csv file')
+        # if not request:
+        #     return render_template('page.html',
+        #                         submitbuttondisplay = 'show',
+        #                         submitbuttonpressed = '',
+        #                         datacsvcsv = '',
+        #                         auth_info=auth_info,
+        #                         path_prefix=path_prefix,
+        #                         csvdownload = "",
+        #                         message_failed = 'Please upload a csv file')
         data_file = request.files['data_file']
         print('1002')
         addresscol = request.form['addresscol']
@@ -128,7 +128,7 @@ def front():
                                 )
         
         
-        if data_file and allowed_file(data_file.filename):
+        if allowed_file(data_file.filename):
             try:
                 print('1004')
                 data_file.seek(0, os.SEEK_END)
