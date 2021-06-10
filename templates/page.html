@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script>
+function disableBtn() {
+    document.getElementById("btntest").disabled = true;
+}
+</script>
+
 <script type="text/javascript">// <![CDATA[
         function showPicture() {
           var sourceOfPicture = "/tools/geo-coding-tool/static/img/loading2.gif";
@@ -28,12 +34,6 @@
         filename    = el.files[0].name,
         warningel   = document.getElementById( 'lbError' );
         successel   = document.getElementById( 'lbSuccess' );
-
-    if (filesize == 0){
-      document.getElementById('btntest').disabled = true;
-    } elif (filesize > 0) {
-      document.getElementById('btntest').disabled = false;
-    }
 
     if ( filesize > maxfilesize )
     {
@@ -55,7 +55,7 @@
 // ]]></script>
 </head>
 
-<body>
+<body onload=disableBtn()>
 <div class="headercontainer">
   <div class="headercontainer-addon">
     <div class="col-lg-6" id="header">
