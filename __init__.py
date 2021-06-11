@@ -248,16 +248,16 @@ def front():
                                 message_failed = 'Please upload a csv file')
 
 
-@app.route('/result/downloadcsv', methods=['GET', 'POST'])
-def downloadcsv():
+@app.route('/result/<d1>/<file>/downloadcsv', methods=['GET', 'POST'])
+def downloadcsv(d1, file):
     if request.method == 'GET':
         resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
         resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
         resp.headers["Content-Type"] = "text/csv"
         return resp
 
-@app.route('/result/downloadlog', methods=['GET', 'POST'])
-def downloadlog():
+@app.route('/result/<d1>/<file>/downloadlog', methods=['GET', 'POST'])
+def downloadlog(d1, file):
     if request.method == 'GET':
         resp = make_response(send_file(front.logsavepath))
         resp.headers["Content-Disposition"] = "attachment; filename={logfilename}".format(logfilename = front.logfilename)
