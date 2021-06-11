@@ -128,6 +128,11 @@ function disableBtn() {
       {{message_place}}
     </div>
   </p>
+  <p>
+    <div class='msg-success'>
+      {{filehexprint}}
+    </div>
+  </p>
 {%endif%}
 
 
@@ -144,8 +149,9 @@ function disableBtn() {
 <p>
   {% if csvdownload != "" %}
     <div class='btn-csv-download'>
-      <a href="/result/<d1>/<file>/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
-      <a href="/result/<d1>/<file>/downloadlog"><button class='btn log-download'>Download Log File</button></a>
+      <a href="/result/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
+      <a href="/result/downloadlog"><button class='btn log-download'>Download Log File</button></a>
+      <a href="{{ url_for('zip_download', file=file) }}">Download</a>
     </div>
   {% endif %}
 </p>

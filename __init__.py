@@ -3,11 +3,15 @@ import chardet
 from flask import Flask
 from flask import render_template
 from flask import request
-from flask import make_response
+from flask import make_response,send_from_directory
 from flask.helpers import send_file
 from werkzeug.utils import secure_filename
 import pandas as pd
+import pathlib
+import zipfile
+from os.path import basename
 import csv
+from os import listdir
 import os
 from uuid import uuid4
 import datetime
@@ -84,6 +88,8 @@ def front():
     if request.method == 'POST':
         print('1001')
         changehex()
+        print(changehex.filehex)
+        printchangehex = changehex.filehex
         auth_info = 'Internet'
         path_prefix = ''
         # autocrlf = false
@@ -126,7 +132,7 @@ def front():
                                 message_failed = 'Please enter Address Field Name, it cannot be empty.'
                                 )
         
-        
+
         if allowed_file(data_file.filename):
             try:
                 print('1004')
@@ -209,25 +215,36 @@ def front():
                 with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
                     csv_reader = csv.reader(csv_file, delimiter=',')
                     csv_reader = list(csv_reader)
-                print(datetime.datetime.now(),'1012')
-                resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
-                resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
-                resp.headers["Content-Type"] = "text/csv"
-                return resp
-                # return render_template("page.html",
-                #                     auth_info=auth_info,
-                #                     path_prefix=path_prefix,
-                #                     submitbuttondisplay = 'hide',
-                #                     submitbuttonpressed = '',
-                #                     csvdownload = editedfilename,
-                #                     datacsvcsv=csv_reader,
-                #                     d1=d1,
-                #                     file=urlfilename,
-                #                     message = 'Success, download updated csv file and log file here',
-                #                     message_file= "Uploaded file: {}".format(front.filename),
-                #                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
-                #                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
-                #                     )
+                print('1012')
+                
+                dir_name = os.path.join(app.config["UPLOAD_FOLDER"],'{originalfilename}.zip').format(originalfilename = urlfilename)
+
+
+                with zipfile.ZipFile(dir_name, 'w') as zipObj2:
+                    zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename)), basename(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename))))
+                    zipObj2.write(logsavepath, basename(logsavepath))
+                    zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
+                print('1013 - done zip')
+                storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
+                # resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
+                # resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
+                # resp.headers["Content-Type"] = "application/zip"
+                # return resp
+                return render_template("page.html",
+                                    # filehexprint = '::::::::: '.join(stringtry),
+                                    auth_info=auth_info,
+                                    path_prefix=path_prefix,
+                                    submitbuttondisplay = 'hide',
+                                    submitbuttonpressed = '',
+                                    csvdownload = editedfilename,
+                                    datacsvcsv=csv_reader,
+                                    d1=d1,
+                                    file=storedzipfile,
+                                    message = 'Success, download updated csv file and log file here',
+                                    message_file= "Uploaded file: {}".format(front.filename),
+                                    # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                                    message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                                    )
             except Exception as e:
                 print(e)
                 print('1004')
@@ -252,21 +269,25 @@ def front():
                                 message_failed = 'Please upload a csv file')
 
 
-@app.route('/result/<d1>/<file>/downloadcsv', methods=['GET', 'POST'])
-def downloadcsv(d1, file):
-    if request.method == 'GET':
-        resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
-        resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
-        resp.headers["Content-Type"] = "text/csv"
-        return resp
+@app.route('/zip_download/<file>')
+def zip_download(file):
+    return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
 
-@app.route('/result/<d1>/<file>/downloadlog', methods=['GET', 'POST'])
-def downloadlog(d1, file):
-    if request.method == 'GET':
-        resp = make_response(send_file(front.logsavepath))
-        resp.headers["Content-Disposition"] = "attachment; filename={logfilename}".format(logfilename = front.logfilename)
-        resp.headers["Content-Type"] = "text/csv"
-        return resp
+# @app.route('/result/downloadcsv', methods=['GET', 'POST'])
+# def downloadcsv():
+#     if request.method == 'GET':
+#         resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
+#         resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
+#         resp.headers["Content-Type"] = "text/csv"
+#         return resp
+
+# @app.route('/result/downloadlog', methods=['GET', 'POST'])
+# def downloadlog():
+#     if request.method == 'GET':
+#         resp = make_response(send_file(front.logsavepath))
+#         resp.headers["Content-Disposition"] = "attachment; filename={logfilename}".format(logfilename = front.logfilename)
+#         resp.headers["Content-Type"] = "text/csv"
+#         return resp
 
 
 if __name__ == '__main__':
