@@ -20,7 +20,7 @@ sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
 # import validate_data_json #
 import geocoder
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/bd-ogcdp/tools/geo_coding_tool/validator/csvupload')
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.secret_key = '123456789'
@@ -34,6 +34,7 @@ ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'xls'}
 
 def changehex():
     filehex = uuid4().hex
+    changehex.filehex = filehex
     app.config['UPLOAD_FOLDER']  = os.path.join('/bd-ogcdp/tools/geo_coding_tool/validator/csvupload', filehex)
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
@@ -231,7 +232,7 @@ def front():
                 # resp.headers["Content-Type"] = "application/zip"
                 # return resp
                 return render_template("page.html",
-                                    # filehexprint = '::::::::: '.join(stringtry),
+                                    hex = changehex.filehex,
                                     auth_info=auth_info,
                                     path_prefix=path_prefix,
                                     submitbuttondisplay = 'hide',
@@ -269,8 +270,8 @@ def front():
                                 message_failed = 'Please upload a csv file')
 
 
-@app.route('/zip_download/<file>')
-def zip_download(file):
+@app.route('/<hex>/<file>')
+def zip_download(hex, file):
     return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
 
 # @app.route('/result/downloadcsv', methods=['GET', 'POST'])
