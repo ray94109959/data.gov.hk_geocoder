@@ -284,7 +284,7 @@ def findaddress(addressdata, logfilepathname):
                             dp.to_csv(ffile, header=False, index=False)
 
                     elif finals[l][0][0] == "Error" and finals[l][0][1] == "3":
-                        # print('2: Error - Address not found in ADI Tool')
+                        # print('7: Error - ADI Request Timeout')
                         print('1010')
                         latlist.append("Error")
                         lnglist.append("Error")
