@@ -88,8 +88,8 @@ def front():
     if request.method == 'POST':
         print('1001')
         changehex()
-        print(changehex.filehex)
-        printchangehex = changehex.filehex
+        # print(changehex.filehex)
+        # printchangehex = changehex.filehex
         auth_info = 'Internet'
         path_prefix = ''
         # autocrlf = false
