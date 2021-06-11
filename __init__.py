@@ -210,20 +210,24 @@ def front():
                     csv_reader = csv.reader(csv_file, delimiter=',')
                     csv_reader = list(csv_reader)
                 print(datetime.datetime.now(),'1012')
-                return render_template("page.html",
-                                    auth_info=auth_info,
-                                    path_prefix=path_prefix,
-                                    submitbuttondisplay = 'hide',
-                                    submitbuttonpressed = '',
-                                    csvdownload = editedfilename,
-                                    datacsvcsv=csv_reader,
-                                    d1=d1,
-                                    file=urlfilename,
-                                    message = 'Success, download updated csv file and log file here',
-                                    message_file= "Uploaded file: {}".format(front.filename),
-                                    # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
-                                    message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
-                                    )
+                resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = front.editedfilename))))
+                resp.headers["Content-Disposition"] = "attachment; filename={csvfilename}".format(csvfilename = front.editedfilename)
+                resp.headers["Content-Type"] = "text/csv"
+                return resp
+                # return render_template("page.html",
+                #                     auth_info=auth_info,
+                #                     path_prefix=path_prefix,
+                #                     submitbuttondisplay = 'hide',
+                #                     submitbuttonpressed = '',
+                #                     csvdownload = editedfilename,
+                #                     datacsvcsv=csv_reader,
+                #                     d1=d1,
+                #                     file=urlfilename,
+                #                     message = 'Success, download updated csv file and log file here',
+                #                     message_file= "Uploaded file: {}".format(front.filename),
+                #                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                #                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                #                     )
             except Exception as e:
                 print(e)
                 print('1004')
