@@ -313,7 +313,6 @@ def findaddress(addressdata, logfilepathname):
                         addressnameappend = []
                         engaddressappend1 = []
                         chiaddressappend1 = []
-                        prange = len(finals[l][0])
                         engaddressappend1.append(finals[l][0][0])
                         chiaddressappend1.append(finals[l][0][1])
                         engaddressappend1 = ', '.join(engaddressappend1)
