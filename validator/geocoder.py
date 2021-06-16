@@ -68,8 +68,6 @@ def findaddress(addressdata, logfilepathname):
         global finallist
         latlist = []
         lnglist =[]
-        errorlist = []
-        threesamescorelist = []
         finallist = []
         urllist = []
         print(addressdata)
@@ -190,7 +188,6 @@ def findaddress(addressdata, logfilepathname):
                                             samescore.append('Same Score')
                                             engaddressappend1 = []
                                             chiaddressappend1 = []
-                                            prange = len(finals[l][x])
                                             engaddressappend1.append(finals[l][x][0])
                                             chiaddressappend1.append(finals[l][x][1])
                                             scoreappend.append(finals[l][x][-1])
@@ -207,7 +204,6 @@ def findaddress(addressdata, logfilepathname):
                                         samescore.append('Same Score')
                                         engaddressappend1 = []
                                         chiaddressappend1 = []
-                                        prange = len(finals[l][x])
                                         engaddressappend1.append(finals[l][x][0])
                                         chiaddressappend1.append(finals[l][x][1])
                                         scoreappend.append(finals[l][x][-1])
