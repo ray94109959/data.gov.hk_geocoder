@@ -6,7 +6,7 @@ import datetime
 from psi.config import config_loader
 import sys
 
-def parse(x):
+def parse(x): #Get lat lng from ADI function
     finallist = []
     print('1008a')
     if x != 'error1':
@@ -86,7 +86,7 @@ def findaddress(addressdata, logfilepathname):
                 urllist.append('error1')
         # print(urllist)
         print('1008')
-        result = executor.map(parse, urllist)
+        result = executor.map(parse, urllist) #Begin parse function using multiple threads
         print('1009a -- result: ', result)
         finals = []
 
@@ -95,7 +95,7 @@ def findaddress(addressdata, logfilepathname):
         # print(finals)
         print('1009b')
         
-        for l in range(len(finals)):
+        for l in range(len(finals)): # Make logfile
                 if len(finals[l]) > 1:
                     if finals[l][0][-1] != finals[l][1][-1]:
                         # print('3: Highest Score Address Found')
