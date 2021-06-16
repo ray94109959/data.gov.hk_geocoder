@@ -306,7 +306,7 @@ def findaddress(addressdata, logfilepathname):
                             dp.to_csv(ffile, header=False, index=False)
 
                     else:
-                        # print('5: Highest Score Address Found')
+                        # print('5: Highest Score Address Found - Only One Result in ADI')
                         print('1010')
                         # print(finals[l])
                         latlist.append(finals[l][0][-3])
