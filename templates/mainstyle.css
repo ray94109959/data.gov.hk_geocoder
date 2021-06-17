@@ -1,0 +1,220 @@
+body {
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+
+.headercontainer {
+    background-color: #000000;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    overflow: hidden;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.8em;
+    padding-top: 0.5em;
+}
+
+.headercontainer-addon {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; 
+}
+
+.bs-component{
+    width:fit-content
+}
+
+.container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#header {
+    float:left
+}
+
+#auth-info {
+    float: right;
+}
+
+.headertext {
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    padding: 1em;
+}
+
+.input-group-addon {
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1;
+    color: #333333;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
+
+.input-group-btn{
+    display:block
+}
+
+.input-group-addon, .input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+#file-selector {
+    padding: 0;
+}
+
+.input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+.input-group-addon, .input-group-btn, .input-group .form-control {
+    display: table-cell;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #4582ec;
+    border-color: #4582ec;
+}
+
+.row {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top:1em;
+    padding-bottom: 1em;
+}
+
+.col-lg-10 {
+    padding: 1em;
+    text-align: center;
+}
+
+.input-group-btn {
+    text-align: center;
+}
+
+.input-group2 {
+    position: relative;
+    border-collapse: separate;
+    padding: 1em;
+}
+
+
+.btn-csv-download{
+    display: flexbox;
+    text-align: center;
+}
+
+.error_text{
+    display: flexbox;
+    text-align: center;
+}
+
+.msg-success{
+    display: flexbox;
+    text-align: center;
+}
+
+#lbSuccess{
+    display: flexbox;
+    text-align: center;
+    color: green;
+}
+
+#lbError{
+    display: flexbox;
+    text-align: center;
+    color: red;
+}
+
+.msg-failed{
+    color: red
+}
+
+.return-home{
+    position: relative;
+}
+
+#loading {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid lightgray;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+

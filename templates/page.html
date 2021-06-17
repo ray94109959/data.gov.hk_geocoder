@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Geo-Coding Tool | DATA.GOV.HK</title>
   
-  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/tools/geo-coding-tool/static/css/mainstyle.css" />
+  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/tools/geo-coding-tool/templates/mainstyle.css" />
   <link rel="shortcut icon" type="image/png" href="{{ path_prefix }}/favicon.png"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -146,12 +146,12 @@ function disableBtn() {
   {% endif %}
 {% endwith %}
 
-<!--<p>
+<p>
   {% if csvdownload != "" %}
     <div class='btn-csv-download'>
       <a href="/result/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
       <a href="/result/downloadlog"><button class='btn log-download'>Download Log File</button></a>
-      <a href="{{ url_for('hex=hex', file=file) }}">Download</a>
+      <a href="{{ url_for(hex=hex, file=file) }}">Download</a>
     </div>
   {% endif %}
 </p>
@@ -177,6 +177,6 @@ function disableBtn() {
       </tbody> 
     </table>
   </div>
-{% endif %}-->
+{% endif %}
 </body>
 </html>

@@ -20,7 +20,7 @@ sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
 # import validate_data_json #
 import geocoder
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/bd-ogcdp/tools/geo_coding_tool/validator/csvupload')
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.secret_key = '123456789'
@@ -227,25 +227,25 @@ def front():
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
                 print('1013 - done zip')
                 # storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
-                resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
-                resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
-                resp.headers["Content-Type"] = "application/zip"
-                return resp  #Return zip file to user
-                # return render_template("page.html",
-                #                     hex = changehex.filehex,
-                #                     auth_info=auth_info,
-                #                     path_prefix=path_prefix,
-                #                     submitbuttondisplay = 'hide',
-                #                     submitbuttonpressed = '',
-                #                     csvdownload = editedfilename,
-                #                     datacsvcsv=csv_reader,
-                #                     d1=d1,
-                #                     file=storedzipfile,
-                #                     message = 'Success, download updated csv file and log file here',
-                #                     message_file= "Uploaded file: {}".format(front.filename),
-                #                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
-                #                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
-                #                     )
+                # resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
+                # resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
+                # resp.headers["Content-Type"] = "application/zip"
+                # return resp  #Return zip file to user
+                return render_template("page.html",
+                                    hex = changehex.filehex,
+                                    auth_info=auth_info,
+                                    path_prefix=path_prefix,
+                                    submitbuttondisplay = 'hide',
+                                    submitbuttonpressed = '',
+                                    csvdownload = editedfilename,
+                                    datacsvcsv=csv_reader,
+                                    d1=d1,
+                                    file=storedzipfile,
+                                    message = 'Success, download updated csv file and log file here',
+                                    message_file= "Uploaded file: {}".format(front.filename),
+                                    # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                                    message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                                    )
             except Exception as e:
                 print(e)
                 print('1004')
@@ -270,9 +270,9 @@ def front():
                                 message_failed = 'Please upload a csv file')
 
 
-# @app.route('/<hex>/<file>')
-# def zip_download(hex, file):
-#     return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
+@app.route('/<hex>/<file>')
+def zip_download(hex, file):
+    return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
 
 # @app.route('/result/downloadcsv', methods=['GET', 'POST'])
 # def downloadcsv():
