@@ -274,8 +274,8 @@ def front():
 @app.route('/<hex>/<file>')
 def zip_download(hex, file):
     # return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
-    resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = front.urlfilename))))
-    resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = front.urlfilename)
+    resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}'.format(zipfilename = file))))
+    resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}".format(zipfilename = file)
     resp.headers["Content-Type"] = "application/zip"
     return resp  #Return zip file to user
 
