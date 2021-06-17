@@ -15,7 +15,7 @@ def parse(x): #Get lat lng from ADI function
         proxies = config.get_proxy_config()
         try:
             print('x: ',x)
-            pagetext = requests.get(x,
+            pagetext = requests.get(x, #Request data from ADI
                                 timeout=20,
                                 stream=True,
                                 proxies=proxies,
@@ -26,7 +26,7 @@ def parse(x): #Get lat lng from ADI function
             print('1008c')
             soup = bs(page, 'lxml')
             print('1008d')
-            data = soup.find_all('engpremisesaddress', limit=11)
+            data = soup.find_all('engpremisesaddress', limit=11) #find data
             data1 = soup.find_all('chipremisesaddress', limit=11)
             data2 = soup.find_all('geoaddress', limit=11)
             data3 = soup.find_all('latitude', limit=11)
@@ -62,7 +62,7 @@ def parse(x): #Get lat lng from ADI function
 def findaddress(addressdata, logfilepathname):       
     # if __name__ == '__main__':
         print(datetime.datetime.now(),'1007')
-        executor = ThreadPoolExecutor(max_workers=5)
+        executor = ThreadPoolExecutor(max_workers=5) #Max thread number
         global latlist
         global lnglist
         global finallist
@@ -73,7 +73,7 @@ def findaddress(addressdata, logfilepathname):
         print(addressdata)
         print(len(addressdata))
 
-        for r in range(len(addressdata)):
+        for r in range(len(addressdata)): #Turn data in csv/excel to link for ADI
         # for r in range(2):
             try:
                 address = addressdata[r]

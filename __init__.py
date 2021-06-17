@@ -32,7 +32,7 @@ app.secret_key = '123456789'
 #     os.makedirs(app.config['UPLOAD_FOLDER'])
 ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'xls'}
 
-def changehex():
+def changehex(): #make/change file directory
     filehex = uuid4().hex
     changehex.filehex = filehex
     app.config['UPLOAD_FOLDER']  = os.path.join('/bd-ogcdp/tools/geo_coding_tool/validator/csvupload', filehex)
@@ -51,7 +51,7 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-def getdata(csvdata, addresscolumn):
+def getdata(csvdata, addresscolumn): #get data from geocoder/ADI
     # colname = "Address Name"
     colname = addresscolumn
     addressdata = csvdata[colname].tolist()
@@ -67,13 +67,13 @@ def getdata(csvdata, addresscolumn):
     csvdata["ALS Longitude"] = geocoder.lnglist
     return csvdata
 
-def allowed_file(filename):
+def allowed_file(filename): #Allowed file type
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def front():
-    if request.method == 'GET':
+    if request.method == 'GET': #Get tool website
         print('1000')
         auth_info = 'Internet'
         path_prefix = ''
@@ -86,7 +86,7 @@ def front():
                             submitbuttonpressed = '',
                             message = '')
 
-    if request.method == 'POST':
+    if request.method == 'POST': #Post, after clicking submit button
         print('1001')
         changehex()
         # print(changehex.filehex)
@@ -103,13 +103,13 @@ def front():
         #                         path_prefix=path_prefix,
         #                         csvdownload = "",
         #                         message_failed = 'Please upload a csv file')
-        data_file = request.files['data_file']
+        data_file = request.files['data_file'] #get uploaded file by user
         print('1002')
-        addresscol = request.form['addresscol']
+        addresscol = request.form['addresscol']#get address column name by user
         print('1003')
         # print(type(data_file))
         
-        if data_file.filename=='':
+        if data_file.filename=='': #Check for upload file
             print('1004')
             return render_template('page.html',
                                 submitbuttondisplay = 'show',
@@ -121,7 +121,7 @@ def front():
                                 datacsvcsv = ''
                                 )
         
-        if addresscol=='':
+        if addresscol=='': #Check for Address Column Name
             print('1004')
             return render_template('page.html',
                                 submitbuttondisplay = 'show',
@@ -136,12 +136,12 @@ def front():
 
         if allowed_file(data_file.filename):
             try:
-                print('1004')
+                print('1004')                           #Success
                 data_file.seek(0, os.SEEK_END)
                 data_file_length = data_file.tell()
                 # print(data_file_length)
                 data_file.seek(0, 0)
-                if data_file_length > (2*1028*1028):
+                if data_file_length > (2*1028*1028):   #Check for file size
                     print('1005')
                     return render_template('page.html',
                                     submitbuttondisplay = 'show',
@@ -170,7 +170,7 @@ def front():
                 
                 # filename = front.filename
                 # print(filename[-4:])
-                if filename[-4:] == 'xlsx':
+                if filename[-4:] == 'xlsx':          #Check for file type and save to directory
                     print('1006')
                     excelfilename = ''.join([urlfilename, '.csv'])
                     data_file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
@@ -200,14 +200,14 @@ def front():
                         print(uniencoding)
                         try:
                             print('1006b')
-                            datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding)
+                            datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding)  #Check for encoding
                         except:
                             print('1006b')
                             datacsv = pd.read_csv(os.path.join(app.config["UPLOAD_FOLDER"], filename), encoding=uniencoding, delimiter='\t')
                         editedfilename = ''.join(['edited-',filename])
 
                 
-                getdata(datacsv, front.addresscol)
+                getdata(datacsv, front.addresscol) #Get data from getdata()
                 # print(datacsv)
                 print('1011')
                 datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
@@ -221,7 +221,7 @@ def front():
                 dir_name = os.path.join(app.config["UPLOAD_FOLDER"],'{originalfilename}.zip').format(originalfilename = urlfilename)
 
 
-                with zipfile.ZipFile(dir_name, 'w') as zipObj2:
+                with zipfile.ZipFile(dir_name, 'w') as zipObj2:   #ZipFile in directory
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename)), basename(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename))))
                     zipObj2.write(logsavepath, basename(logsavepath))
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
@@ -230,7 +230,7 @@ def front():
                 resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
                 resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
                 resp.headers["Content-Type"] = "application/zip"
-                return resp
+                return resp  #Return zip file to user
                 # return render_template("page.html",
                 #                     hex = changehex.filehex,
                 #                     auth_info=auth_info,
