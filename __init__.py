@@ -277,7 +277,7 @@ def front():
 #     resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}'.format(zipfilename = file))))
 #     resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}".format(zipfilename = file)
 #     resp.headers["Content-Type"] = "application/zip"
-    return resp  #Return zip file to user
+    # return resp  #Return zip file to user
 
 # @app.route('/result/downloadcsv', methods=['GET', 'POST'])
 # def downloadcsv():
