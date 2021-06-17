@@ -226,7 +226,7 @@ def front():
                     zipObj2.write(logsavepath, basename(logsavepath))
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
                 print('1013 - done zip')
-                # storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
+                storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
                 # resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
                 # resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
                 # resp.headers["Content-Type"] = "application/zip"
