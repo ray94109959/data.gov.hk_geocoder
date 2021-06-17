@@ -226,6 +226,7 @@ def front():
                     zipObj2.write(logsavepath, basename(logsavepath))
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
                 print('1013 - done zip')
+                front.urlfilename = urlfilename
                 storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
                 # resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
                 # resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
@@ -272,7 +273,11 @@ def front():
 
 @app.route('/<hex>/<file>')
 def zip_download(hex, file):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
+    # return send_from_directory(app.config["UPLOAD_FOLDER"], file, as_attachment=True)
+    resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = front.urlfilename))))
+    resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = front.urlfilename)
+    resp.headers["Content-Type"] = "application/zip"
+    return resp  #Return zip file to user
 
 # @app.route('/result/downloadcsv', methods=['GET', 'POST'])
 # def downloadcsv():
