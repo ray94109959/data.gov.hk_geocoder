@@ -85,14 +85,24 @@ function disableBtn() {
             <div id='lbError'></div>
             <div id='lbSuccess'></div>
             <div class="form-group">
-              <div class="input-group2">
-                <div class="col-lg-10">
-                  <form>
+              <form>
+                <div class="input-group2">
+                  <div class="col-lg-10">
                     <label for="fname">Address Column Name:</label>
                     <input type="text" id="addresscol" name="addresscol" maxlength='100'>
-                  </form>
+                  </div>
+                </div>
+                <div class="input-group2">
+                  <div class="col-lg-10">
+                    <input type="radio" id="radio1" name="radioa" value="1" checked='checked'>
+                    <label for="radio1">Download Zip Folder</label><br>
+                    <input type="radio" id="radio2" name="radioa" value="2">
+                    <label for="radio2">Preview Edited File</label><br>
+                    <input type="radio" id="radio3" name="radioa" value="3">
+                    <label for="radio3">Preview Log File</label>
                 </div>
               </div>
+              </form>
             </div>
           </form>
           <div class="input-group-btn">

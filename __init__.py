@@ -107,6 +107,7 @@ def front():
         print('1002')
         addresscol = request.form['addresscol']#get address column name by user
         print('1003')
+        option = request.form['radioa']
         # print(type(data_file))
         
         if data_file.filename=='': #Check for upload file
@@ -217,6 +218,9 @@ def front():
                     csv_reader = csv.reader(csv_file, delimiter=',')
                     csv_reader = list(csv_reader)
                 print('1012')
+                with open(os.path.join(app.config["UPLOAD_FOLDER"], logfilename)) as csv_file:
+                    log_reader = csv.reader(csv_file, delimiter=',')
+                    log_reader = list(log_reader)
                 
                 dir_name = os.path.join(app.config["UPLOAD_FOLDER"],'{originalfilename}.zip').format(originalfilename = urlfilename)
 
@@ -228,25 +232,35 @@ def front():
                 print('1013 - done zip')
                 front.urlfilename = urlfilename
                 storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
-                resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
-                resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
-                resp.headers["Content-Type"] = "application/zip"
-                return resp  #Return zip file to user
-                # return render_template("page.html",
-                #                     hex = changehex.filehex,
-                #                     auth_info=auth_info,
-                #                     path_prefix=path_prefix,
-                #                     submitbuttondisplay = 'hide',
-                #                     submitbuttonpressed = '',
-                #                     csvdownload = editedfilename,
-                #                     datacsvcsv=csv_reader,
-                #                     d1=d1,
-                #                     file=storedzipfile,
-                #                     message = 'Success, download updated csv file and log file here',
-                #                     message_file= "Uploaded file: {}".format(front.filename),
-                #                     # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
-                #                     message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
-                #                     )
+                if option == '1':
+                    resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
+                    resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
+                    resp.headers["Content-Type"] = "application/zip"
+                    return resp
+                elif option == '2':
+                    return render_template("page.html",
+                                        # filehexprint = '::::::::: '.join(stringtry),
+                                        auth_info=auth_info,
+                                        path_prefix=path_prefix,
+                                        submitbuttondisplay = 'hide',
+                                        submitbuttonpressed = '',
+                                        csvdownload = '',
+                                        datacsvcsv=csv_reader,
+                                        # d1=d1,
+                                        # file=storedzipfile,
+                                        # message = 'Success, download updated csv file and log file here',
+                                        # message_file= "Uploaded file: {}".format(front.filename),
+                                        # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                                        # message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                                        )
+                elif option == '3':
+                    return render_template("page.html",
+                                        auth_info=auth_info,
+                                        path_prefix=path_prefix,
+                                        submitbuttondisplay = 'hide',
+                                        submitbuttonpressed = '',
+                                        csvdownload = '',
+                                        datacsvcsv=log_reader)
             except Exception as e:
                 print(e)
                 print('1004')
