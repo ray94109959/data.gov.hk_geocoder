@@ -20,7 +20,7 @@ sys.path.append('/bd-ogcdp/tools/geo_coding_tool/validator')
 # import validate_data_json #
 import geocoder
 
-app = Flask(__name__, static_url_path='/bd-ogcdp/tools/geo_coding_tool/validator/csvupload')
+app = Flask(__name__)
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.secret_key = '123456789'
