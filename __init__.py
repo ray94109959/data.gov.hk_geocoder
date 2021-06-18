@@ -228,7 +228,7 @@ def front():
                 with zipfile.ZipFile(dir_name, 'w') as zipObj2:   #ZipFile in directory
                     zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename)), basename(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename))))
                     zipObj2.write(logsavepath, basename(logsavepath))
-                    zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
+                    # zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
                 print('1013 - done zip')
                 front.urlfilename = urlfilename
                 storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
