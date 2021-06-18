@@ -12,14 +12,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-
 <script type="text/javascript">// <![CDATA[
         function showPicture() {
           var sourceOfPicture = "/tools/geo-coding-tool/static/img/loading2.gif";
           var img = document.getElementById('loading')
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
-          $("#loading").delay(10000).fadeOut(1000);
+          if (document.querySelector("input[name=radioa]:checked").value=='1'){
+            $('#loading').delay(5000).fadeOut('fast');
+          }
         } 
 // ]]></script>
 <script>
@@ -84,7 +85,7 @@ function disableBtn() {
             <div class="form-group">
               <div class="input-group">
                 <label for="fname">Address Column Name:</label>
-                <input type="text" id="addresscol" name="addresscol" maxlength='100'>
+                <input type="text" id="addresscol" name="addresscol" maxlength='100' value='Address Name'>
               </div>
               <div class="input-group">
                 <label class="col-lg-2 control-label">Type:</label>
@@ -106,57 +107,6 @@ function disableBtn() {
   </div>
 </div>
 <img style="display:none;" id="loading" />
-
-{% if message != "" %}
-  <p>
-    <div class='msg-success'>
-      <div class='msg-failed'>
-        {{message_failed}}
-      </div>
-    </div>
-  </p>
-  <p>
-    <div class='msg-success'>
-      {{message_file}}
-    </div>
-  </p>
-  <p>
-    <div class='msg-success'>
-      {{message}}
-    </div>
-  </p>
-  <p>
-    <div class='msg-success'>
-      {{message_place}}
-    </div>
-  </p>
-  <!-- <p>
-    <div class='msg-success'>
-      {{filehexprint}}
-    </div>
-  </p> -->
-{%endif%}
-
-
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <div class=flashes>
-      {% for category_color, message in messages %}
-        <p class="error_text" style="color:{{ category_color }};width:500px;">{{ message }}</p>
-      {% endfor %}
-      </div>
-  {% endif %}
-{% endwith %}
-
-<!--<p>
-  {% if csvdownload != "" %}
-    <div class='btn-csv-download'>
-      <a href="/result/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
-      <a href="/result/downloadlog"><button class='btn log-download'>Download Log File</button></a>
-      <a href="{{ url_for('zip_download',hex=hex, file=file) }}">Download</a>
-    </div>
-  {% endif %}
-</p>-->
 
 {% if datacsvcsv != "" %}
   <div class='previewtable'>
@@ -182,5 +132,55 @@ function disableBtn() {
     </div>
   </div>
 {% endif %}
+
+<!--{% if message != "" %}
+  <p>
+    <div class='msg-success'>
+      <div class='msg-failed'>
+        {{message_failed}}
+      </div>
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message_file}}
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message}}
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{message_place}}
+    </div>
+  </p>
+  <p>
+    <div class='msg-success'>
+      {{filehexprint}}
+    </div>
+  </p> 
+{%endif%}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class=flashes>
+      {% for category_color, message in messages %}
+        <p class="error_text" style="color:{{ category_color }};width:500px;">{{ message }}</p>
+      {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}-->
+<!--<p>
+  {% if csvdownload != "" %}
+    <div class='btn-csv-download'>
+      <a href="/result/downloadcsv"><button class='btn csv-download'>Download CSV</button></a>
+      <a href="/result/downloadlog"><button class='btn log-download'>Download Log File</button></a>
+      <a href="{{ url_for('zip_download',hex=hex, file=file) }}">Download</a>
+    </div>
+  {% endif %}
+</p>-->
 </body>
 </html>

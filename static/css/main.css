@@ -1,3 +1,4 @@
+
 #auth-info {
     color: #ffffff;
     background-color: #000000;
@@ -45,17 +46,39 @@
     margin-bottom:10px;
 }
 
+#loading {
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btntest2{
+    color:aqua
+}
+
+.previewtable{
+    height:610px;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 table {
+    display: block;
     border-collapse: collapse;
     border-spacing: 0;
+    table-layout: fixed;
     width: 100%;
-    border: 1px solid lightgray;
-    display: block;
-    overflow-x: auto;
     white-space: nowrap;
+    overflow-x: auto;
 }
 
 th, td {
+    border: 1px solid lightgray;
     text-align: left;
     padding: 10px;
     border: 1px solid lightgray;
