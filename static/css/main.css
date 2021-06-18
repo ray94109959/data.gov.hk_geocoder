@@ -20,20 +20,8 @@
     float: left;
 }
 
-#raw-data-json {
-    color: #003399;
-    display: block;
-    font-size: 12px;
-    line-height: 110%;
-    margin: 0;
-    padding: 10.5px;
-    word-break: keep-all;
-    word-wrap: normal;
-    white-space: pre;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    overflow: auto;
-    padding-top: 0;
-    padding-bottom: 0;
+.input-group{
+    padding:8px;
 }
 
 #upload-form {
@@ -44,25 +32,36 @@
     padding: 0;
 }
 
-#result-list {
-    margin: 0;
-    padding: 0;
-    overflow: auto;
+
+#lbSuccess{
+    display: flexbox;
+    color: green;
+    margin-bottom:10px;
 }
 
-#result-list ul {
-    list-style-type: square;
-    margin-bottom: 0;
-    padding-left: 25px;
+#lbError{
+    display: flexbox;
+    color: red;
+    margin-bottom:10px;
 }
 
-#result-list ul li {
-    font-size: 12px;
-    line-height: 110%;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    word-break: keep-all;
-    word-wrap: normal;
-    white-space: pre;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid lightgray;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2
 }

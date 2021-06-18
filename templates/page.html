@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Geo-Coding Tool | DATA.GOV.HK</title>
   
-  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/tools/geo-coding-tool/static/css/mainstyle.css" />
+  <link rel="stylesheet" type="text/css" href="{{ path_prefix }}/tools/geo-coding-tool/static/css/main.css" />
   <link rel="shortcut icon" type="image/png" href="{{ path_prefix }}/favicon.png"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -33,8 +33,8 @@ function disableBtn() {
         filesize    = el.files[0].size,
         pfilesize   = parseFloat((filesize/(1024*1024))).toPrecision(3)
         filename    = el.files[0].name,
-        warningel   = document.getElementById( 'lbError' );
-        successel   = document.getElementById( 'lbSuccess' );
+        warningel   = document.getElementById('lbError');
+        successel   = document.getElementById('lbSuccess');
 
 
     if ( filesize > maxfilesize )
@@ -42,6 +42,8 @@ function disableBtn() {
       warningel.innerHTML = "File too large(MB): " + '<b>' +pfilesize+ ' MB' + '</b>'  + '<br>' + "Maximum size(MB): " + '<b>'+ maxfilesize/(1024*1024) + ' MB' + '</b>';
       successel.innerHTML = '';
       document.getElementById('btntest').disabled = true;
+      warningel.style.display = "block";
+      successel.style.display = "none";
       return false;
     }
     else
@@ -49,6 +51,8 @@ function disableBtn() {
       warningel.innerHTML = '';
       successel.innerHTML = 'Upload File Name: ' +  '<b>' + filename +  '</b>' +'<br>' +'Upload File Size:' +  '<b>'  + pfilesize+ ' MB' +  '</b>' ;
       document.getElementById('btntest').disabled = false;
+      successel.style.display = "block";
+      warningel.style.display = "none";
       return true;
     }   
   }
@@ -56,62 +60,49 @@ function disableBtn() {
 </head>
 
 <body onload=disableBtn()>
-<div class="headercontainer">
-  <div class="headercontainer-addon">
-    <div class="col-lg-6" id="header">
-      <!-- <img src="{{ path_prefix }}/static/img/logo_placeholder.png"> -->
-    </div>
-    <div id="auth-info">
-      {{ auth_info|e }}
-    </div>
-  </div>
+<div id="auth-info">
+  {{ auth_info|e }}
 </div>
-
 <div class="container">
   <div class="bs-docs-section">
-    <div class = "headertext">
-      <h2>Geo-Coding Tool</h2>
-    </div>  
-      <div class="row">
-        <div class="col-lg-6">
-          <form enctype="multipart/form-data" method="post" class="bs-component" id="upload-form">
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon">File:</span>
-                <input type="file" name="data_file" class="form-control" id="file-selector" onchange='validate(this)'>
-                
-              </div>  
-            </div>
-            <div id='lbError'></div>
-            <div id='lbSuccess'></div>
-            <div class="form-group">
-              <form>
-                <div class="input-group2">
-                  <div class="col-lg-10">
-                    <label for="fname">Address Column Name:</label>
-                    <input type="text" id="addresscol" name="addresscol" maxlength='100'>
-                  </div>
-                </div>
-                <div class="input-group2">
-                  <div class="col-lg-10">
-                    <input type="radio" id="radio1" name="radioa" value="1" checked='checked'>
-                    <label for="radio1">Download Zip Folder</label><br>
-                    <input type="radio" id="radio2" name="radioa" value="2">
-                    <label for="radio2">Preview Edited File</label><br>
-                    <input type="radio" id="radio3" name="radioa" value="3">
-                    <label for="radio3">Preview Log File</label>
-                </div>
-              </div>
-              </form>
-            </div>
-          </form>
-          <div class="input-group-btn">
-            <div class='tryhidetest'>
-              <button class="btn btn-primary" id='btntest' type="submit" form="upload-form", value='submit',.disabled=false, onclick="showPicture()">Submit</button>
+    <div class="row">
+      <div class="col-lg-6" id="header">
+        <img src="{{ path_prefix }}/static/img/logo_placeholder3.png">
+        <h2>Geo-Coding Tool</h2>
+      </div>
+      <div class="col-lg-6">
+        <form enctype="multipart/form-data" method="post" class="bs-component" id="upload-form">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">File:</span>
+              <input type="file" name="data_file" class="form-control" id="file-selector" onchange='validate(this)'>
             </div>
           </div>
-        </div>
+          <div id='lbError' style='display: none;'></div>
+          <div id='lbSuccess' style='display: none;'></div>
+          <form>
+            <div class="form-group">
+              <div class="input-group">
+                <label for="fname">Address Column Name:</label>
+                <input type="text" id="addresscol" name="addresscol" maxlength='100'>
+              </div>
+              <div class="input-group">
+                <label class="col-lg-2 control-label">Type:</label>
+                <div class="col-lg-10">
+                  <input type="radio" id="radio1" name="radioa" value="1" checked='checked'>
+                  <label for="radio1">Download Zip Folder</label><br>
+                  <input type="radio" id="radio2" name="radioa" value="2">
+                  <label for="radio2">Preview Edited File</label><br>
+                  <input type="radio" id="radio3" name="radioa" value="3">
+                  <label for="radio3">Preview Log File</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </form>
+          <button class="btn btn-primary" id='btntest' type="submit" form="upload-form", value='submit',.disabled=false, onclick="showPicture()">Submit</button>
       </div>
+    </div>
   </div>
 </div>
 <img style="display:none;" id="loading" />
@@ -168,25 +159,27 @@ function disableBtn() {
 </p>-->
 
 {% if datacsvcsv != "" %}
-  <div id='table-responsive'>
-    <table>
-      <thead>
-        <tr>
-          {%for i in range(0, datacsvcsv[0] |length)%}
-            <th style="padding: 5px">{{ datacsvcsv[0][i] }}</th>
-          {%endfor%}
-        </tr>
-      </thead>
-      <tbody>
-        {%for r in range(1,  datacsvcsv|length)%}
+  <div class='previewtable'>
+    <div id='table-responsive'>
+      <table>
+        <thead>
           <tr>
-            {%for i in range(0,  datacsvcsv[0] |length)%}
-              <td style="padding: 5px">{{ datacsvcsv[r][i] }}</td>
+            {%for i in range(0, datacsvcsv[0] |length)%}
+              <th style="padding: 5px">{{ datacsvcsv[0][i] }}</th>
             {%endfor%}
           </tr>
-        {%endfor%}
-      </tbody> 
-    </table>
+        </thead>
+        <tbody>
+          {%for r in range(1,  datacsvcsv|length)%}
+            <tr>
+              {%for i in range(0,  datacsvcsv[0] |length)%}
+                <td style="padding: 5px">{{ datacsvcsv[r][i] }}</td>
+              {%endfor%}
+            </tr>
+          {%endfor%}
+        </tbody> 
+      </table>
+    </div>
   </div>
 {% endif %}
 </body>
