@@ -93,28 +93,33 @@ function disableBtn() {
                 <label for="fname">Address Column Name:</label>
                 <input type="text" id="addresscol" name="addresscol" maxlength='100' value='Address Name'>
               </div>
-              <div class="input-group">
-                <label class="col-lg-2 control-label">Type:</label>
-                <div class="col-lg-10">
-                  <input type="radio" id="radio1" name="radioa" value="1" checked='checked'>
-                  <label for="radio1">Download Zip Folder</label><br>
-                  <input type="radio" id="radio2" name="radioa" value="2">
-                  <label for="radio2">Preview Edited File</label><br>
-                  <input type="radio" id="radio3" name="radioa" value="3">
-                  <label for="radio3">Preview Log File</label>
+              <div id='radiosubmitbut'>
+                <div class="input-group" >
+                  <label class="col-lg-2 control-label">Type:</label>
+                  <div class="col-lg-10">
+                    <input type="radio" id="radio1" name="radioa" value="1" checked='checked'>
+                    <label for="radio1">Download Zip Folder</label><br>
+                    <input type="radio" id="radio2" name="radioa" value="2">
+                    <label for="radio2">Preview Edited File</label><br>
+                    <input type="radio" id="radio3" name="radioa" value="3">
+                    <label for="radio3">Preview Log File</label>
+                  </div>
+                </div>
+                <div id='btn-test-1'>
+                  <p style='visibility:hidden'>Submit</p>
+                  <button class="btn btn-primary btn-test-2" id='btntest' type="submit" form="upload-form", value='submit',.disabled=false, onclick="showPicture()">Submit</button>
                 </div>
               </div>
             </div>
           </form>
         </form>
-          <button class="btn btn-primary" id='btntest' type="submit" form="upload-form", value='submit',.disabled=false, onclick="showPicture()">Submit</button>
       </div>
     </div>
   </div>
 </div>
 <img style="display:none;" id="loading" />
 <div id='downloadauto' style='display:none'>File is uploaded and your Download will begin automatically...</div>
-<div id='downloadauto2' style='display:none'>If your download haven't begin after 30seconds, please Submit again.</div>
+<div id='downloadauto2' style='display:none'>If your download haven't begin after 30 seconds, please Submit again.</div>
 
 {% if datacsvcsv != "" %}
   <div class='previewtable'>
