@@ -53,6 +53,14 @@
     margin-right: auto;
 }
 
+#downloadauto{
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
 #btntest2{
     color:aqua
 }
