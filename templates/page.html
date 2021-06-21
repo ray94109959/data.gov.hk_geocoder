@@ -146,7 +146,7 @@ function disableBtn() {
   </div>
 {% endif %}
 
-<!--{% if message != "" %}
+{% if message != "" %}
   <p>
     <div class='msg-success'>
       <div class='msg-failed'>
@@ -154,6 +154,10 @@ function disableBtn() {
       </div>
     </div>
   </p>
+{%endif%}
+
+
+<!--
   <p>
     <div class='msg-success'>
       {{message_file}}
@@ -174,10 +178,9 @@ function disableBtn() {
       {{filehexprint}}
     </div>
   </p> 
-{%endif%}
 
 
-{% with messages = get_flashed_messages(with_categories=true) %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     <div class=flashes>
       {% for category_color, message in messages %}

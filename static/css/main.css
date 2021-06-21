@@ -73,6 +73,15 @@
     color: #0000ff;
 }
 
+.msg-failed{
+    align-items: center;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    color:red;
+}
+
 #radiogroup{
     float:left
 }
