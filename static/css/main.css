@@ -71,6 +71,10 @@
     margin-right: auto;    
 }
 
+.radiogroup{
+    float:left
+}
+
 #btntest2{
     color:aqua
 }
