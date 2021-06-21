@@ -62,7 +62,7 @@ def parse(x): #Get lat lng from ADI function
 def findaddress(addressdata, logfilepathname):       
     # if __name__ == '__main__':
         print(datetime.datetime.now(),'1007')
-        executor = ThreadPoolExecutor(max_workers=5) #Max thread number
+        executor = ThreadPoolExecutor(max_workers=10) #Max thread number
         global latlist
         global lnglist
         global finallist
