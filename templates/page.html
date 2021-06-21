@@ -19,10 +19,13 @@
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
           var autodownload = document.getElementById('downloadauto')
+          var autodownload2 = document.getElementById('downloadauto2')
+          autodownload.style.display='none'
+          autodownload2.style.display='none'
           if (document.querySelector("input[name=radioa]:checked").value=='1'){
             autodownload.style.display='block'
+            autodownload2.style.display='block'
             $('#loading').delay(5000).fadeOut('fast');
-            $('#downloadauto').delay(5000).fadeOut('fast');
           }
         } 
 // ]]></script>
@@ -71,7 +74,7 @@ function disableBtn() {
   <div class="bs-docs-section">
     <div class="row">
       <div class="col-lg-6" id="header">
-        <img src="{{ path_prefix }}/tools/geo-coding-tool/static/img/logo_placeholder2.png">
+        <img src="{{ path_prefix }}/tools/geo-coding-tool/static/img/logo_placeholder3.png">
         <h2>Geo-Coding Tool</h2>
       </div>
       <div class="col-lg-6">
@@ -111,6 +114,7 @@ function disableBtn() {
 </div>
 <img style="display:none;" id="loading" />
 <div id='downloadauto' style='display:none'>File is uploaded and your Download will begin automatically...</div>
+<div id='downloadauto2' style='display:none'>If your download haven't begin after 30seconds, please Submit again.</div>
 
 {% if datacsvcsv != "" %}
   <div class='previewtable'>
