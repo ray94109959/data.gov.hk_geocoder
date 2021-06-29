@@ -25,8 +25,8 @@
           autodownload.style.display='none'
           autodownload2.style.display='none'
           if (document.querySelector("input[name=radioa]:checked").value=='1'){
-            document.getElementById('downloadauto').innerText = ''
-            document.getElementById('downloadauto2').innerText = ''
+            autodownload.style.display='block'
+            autodownload2.style.display='block'
             $('#loading').delay(5000).fadeOut('fast');
           }
         } 
