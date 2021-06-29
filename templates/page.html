@@ -19,14 +19,12 @@
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
           document.getElementById('msgfailed').innerText = ''
+          document.getElementById('downloadauto').innerText = ''
+          document.getElementById('downloadauto2').innerText = ''
           $("#table-responsive").remove();
-          var autodownload = document.getElementById('downloadauto')
-          var autodownload2 = document.getElementById('downloadauto2')
-          autodownload.style.display='none'
-          autodownload2.style.display='none'
           if (document.querySelector("input[name=radioa]:checked").value=='1'){
-            autodownload.style.display='block'
-            autodownload2.style.display='block'
+            document.getElementById('downloadauto').innerText = 'File is uploaded and your Download will begin automatically...'
+            document.getElementById('downloadauto2').innerText = 'If your download haven't begin after 30 seconds, please Submit again.'
             $('#loading').delay(5000).fadeOut('fast');
           }
         } 
