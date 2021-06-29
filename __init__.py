@@ -51,21 +51,38 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-def getdata(csvdata, addresscolumn): #get data from geocoder/ADI
+def getdata(csvdata, addresscolumn): #get data from ADI Tool
     # colname = "Address Name"
-    colname = addresscolumn
-    addressdata = csvdata[colname].tolist()
-    logfilename = ''.join([front.urlfilename, '-logfile.csv'])
-    logsavepath = os.path.join(app.config["UPLOAD_FOLDER"], logfilename)
-    csvheader = ["ID","Address Name", "Score", "Remarks", "Latitude", "Longitude", "Geoaddress","English Address Returned by ALS", "Chinese Address Returned by ALS"]
-    with open(logsavepath, 'w') as blank:
-        blankwriter = csv.writer(blank, delimiter=',')
-        blankwriter.writerow(csvheader)
+    shape = csvdata.shape
+    error100row = ''
+    nocolname = ''
+    # print('shape', shape)
+    if shape[0] > 100:
+        # print('csv have more than xxx row')
+        error100row = 'More than 100 row'
+        getdata.error100row = error100row
+        return error100row
+    else:
+        getdata.error100row = error100row
+        try:
+            getdata.nocolname = nocolname
+            colname = addresscolumn
+            addressdata = csvdata[colname].tolist()
+            logfilename = ''.join([front.urlfilename, '-logfile.csv'])
+            logsavepath = os.path.join(app.config["UPLOAD_FOLDER"], logfilename)
+            csvheader = ["ID","Address Name", "Score", "Remarks", "Latitude", "Longitude", "Geoaddress","English Address Returned by ALS", "Chinese Address Returned by ALS"]
+            with open(logsavepath, 'w') as blank:
+                blankwriter = csv.writer(blank, delimiter=',')
+                blankwriter.writerow(csvheader)
 
-    geocoder.findaddress(addressdata, logsavepath)
-    csvdata["ALS Latitude"] = geocoder.latlist
-    csvdata["ALS Longitude"] = geocoder.lnglist
-    return csvdata
+            geocoder.findaddress(addressdata, logsavepath)
+            csvdata["ALS Latitude"] = geocoder.latlist
+            csvdata["ALS Longitude"] = geocoder.lnglist
+            return csvdata
+        except:
+            nocolname = 'Column Name Not Found'
+            getdata.nocolname = nocolname
+            return nocolname
 
 def allowed_file(filename): #Allowed file type
     return '.' in filename and \
@@ -210,57 +227,78 @@ def front():
                 
                 getdata(datacsv, front.addresscol) #Get data from getdata()
                 # print(datacsv)
-                print('1011')
-                datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
-                print(editedfilename)
-                front.editedfilename = editedfilename
-                with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
-                    csv_reader = csv.reader(csv_file, delimiter=',')
-                    csv_reader = list(csv_reader)
-                print('1012')
-                with open(os.path.join(app.config["UPLOAD_FOLDER"], logfilename)) as csv_file:
-                    log_reader = csv.reader(csv_file, delimiter=',')
-                    log_reader = list(log_reader)
-                
-                dir_name = os.path.join(app.config["UPLOAD_FOLDER"],'{originalfilename}.zip').format(originalfilename = urlfilename)
+                if getdata.error100row != '':
+                    print('1011A')
+                    return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                submitbuttonpressed = '',
+                                datacsvcsv = '',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                message_failed = 'Uploaded file have more than 100 rows.')
+                else:
+                    print('1011')
+                    if getdata.nocolname != '':
+                        return render_template('page.html',
+                                submitbuttondisplay = 'show',
+                                submitbuttonpressed = '',
+                                datacsvcsv = '',
+                                auth_info=auth_info,
+                                path_prefix=path_prefix,
+                                csvdownload = "",
+                                message_failed = 'Column Not Found')
+                    else:
+                        datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
+                        print(editedfilename)
+                        front.editedfilename = editedfilename
+                        with open(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename)) as csv_file:
+                            csv_reader = csv.reader(csv_file, delimiter=',')
+                            csv_reader = list(csv_reader)
+                        print('1012')
+                        with open(os.path.join(app.config["UPLOAD_FOLDER"], logfilename)) as csv_file:
+                            log_reader = csv.reader(csv_file, delimiter=',')
+                            log_reader = list(log_reader)
+                        
+                        dir_name = os.path.join(app.config["UPLOAD_FOLDER"],'{originalfilename}.zip').format(originalfilename = urlfilename)
 
 
-                with zipfile.ZipFile(dir_name, 'w') as zipObj2:   #ZipFile in directory
-                    zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename)), basename(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename))))
-                    zipObj2.write(logsavepath, basename(logsavepath))
-                    # zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
-                print('1013 - done zip')
-                front.urlfilename = urlfilename
-                storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
-                if option == '1':
-                    resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
-                    resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
-                    resp.headers["Content-Type"] = "application/zip"
-                    return resp
-                elif option == '2':
-                    return render_template("page.html",
-                                        # filehexprint = '::::::::: '.join(stringtry),
-                                        auth_info=auth_info,
-                                        path_prefix=path_prefix,
-                                        submitbuttondisplay = 'hide',
-                                        submitbuttonpressed = '',
-                                        csvdownload = '',
-                                        datacsvcsv=csv_reader,
-                                        # d1=d1,
-                                        # file=storedzipfile,
-                                        # message = 'Success, download updated csv file and log file here',
-                                        # message_file= "Uploaded file: {}".format(front.filename),
-                                        # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
-                                        # message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
-                                        )
-                elif option == '3':
-                    return render_template("page.html",
-                                        auth_info=auth_info,
-                                        path_prefix=path_prefix,
-                                        submitbuttondisplay = 'hide',
-                                        submitbuttonpressed = '',
-                                        csvdownload = '',
-                                        datacsvcsv=log_reader)
+                        with zipfile.ZipFile(dir_name, 'w') as zipObj2:
+                            zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename)), basename(os.path.join(app.config["UPLOAD_FOLDER"], '{csvfilename}'.format(csvfilename = editedfilename))))
+                            zipObj2.write(logsavepath, basename(logsavepath))
+                            # zipObj2.write(os.path.join(app.config["UPLOAD_FOLDER"], filename), basename(os.path.join(app.config["UPLOAD_FOLDER"], filename)))
+                        print('1013 - done zip')
+                        storedzipfile = '{zipfilename}.zip'.format(zipfilename = urlfilename)
+                        
+                        if option == '1':
+                            resp = make_response(send_file(os.path.join(app.config["UPLOAD_FOLDER"], '{zipfilename}.zip'.format(zipfilename = urlfilename))))
+                            resp.headers["Content-Disposition"] = "attachment; filename={zipfilename}.zip".format(zipfilename = urlfilename)
+                            resp.headers["Content-Type"] = "application/zip"
+                            return resp
+                        elif option == '2':
+                            return render_template("page.html",
+                                                # filehexprint = '::::::::: '.join(stringtry),
+                                                auth_info=auth_info,
+                                                path_prefix=path_prefix,
+                                                submitbuttondisplay = 'hide',
+                                                submitbuttonpressed = '',
+                                                csvdownload = '',
+                                                datacsvcsv=csv_reader,
+                                                # d1=d1,
+                                                # file=storedzipfile,
+                                                # message = 'Success, download updated csv file and log file here',
+                                                # message_file= "Uploaded file: {}".format(front.filename),
+                                                # message_place= "Please find the updated file in C:/Downloads after downloading by clicking on the below buttons" 
+                                                # message_place= "Opening the log file in excel will display ???, please set the csv to utf-8-BOM in notepad++ to see Chinese characters in excel"
+                                                )
+                        elif option == '3':
+                            return render_template("page.html",
+                                                auth_info=auth_info,
+                                                path_prefix=path_prefix,
+                                                submitbuttondisplay = 'hide',
+                                                submitbuttonpressed = '',
+                                                csvdownload = '',
+                                                datacsvcsv=log_reader)
             except Exception as e:
                 print(e)
                 print('1004')
@@ -271,7 +309,7 @@ def front():
                                 auth_info=auth_info,
                                 path_prefix=path_prefix,
                                 csvdownload = "",
-                                message_failed = 'Address Column Name not found in csv'
+                                message_failed = 'Unexpected Error'
                                 )
         else:
             print('1004')

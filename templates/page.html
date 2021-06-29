@@ -16,6 +16,8 @@
         function showPicture() {
           var sourceOfPicture = "/tools/geo-coding-tool/static/img/loading2.gif";
           var img = document.getElementById('loading')
+          var msgfailclose = document.getElementById('msgfailed')
+          msgfailclose.innerText = ''
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
           var autodownload = document.getElementById('downloadauto')
