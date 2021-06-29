@@ -16,10 +16,12 @@
         function showPicture() {
           var sourceOfPicture = "/tools/geo-coding-tool/static/img/loading2.gif";
           var img = document.getElementById('loading')
-          var msgfailclose = document.getElementById('msgfailed')
-          msgfailclose.innerText = ''
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
+          document.getElementById('msgfailed').innerText = ''
+          document.getElementById('downloadauto').innerText = ''
+          document.getElementById('downloadauto2').innerText = ''
+          $("#table-responsive").remove();
           var autodownload = document.getElementById('downloadauto')
           var autodownload2 = document.getElementById('downloadauto2')
           autodownload.style.display='none'

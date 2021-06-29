@@ -247,7 +247,7 @@ def front():
                                 auth_info=auth_info,
                                 path_prefix=path_prefix,
                                 csvdownload = "",
-                                message_failed = 'Column Not Found')
+                                message_failed = 'Address Column Not Found')
                     else:
                         datacsv.to_csv(os.path.join(app.config["UPLOAD_FOLDER"], editedfilename),index=False)
                         print(editedfilename)
