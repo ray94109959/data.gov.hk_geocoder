@@ -309,7 +309,7 @@ def front():
                                 auth_info=auth_info,
                                 path_prefix=path_prefix,
                                 csvdownload = "",
-                                message_failed = 'Unexpected Error'
+                                message_failed = 'Unexpected Error. Please double check uploaded file.'
                                 )
         else:
             print('1004')
