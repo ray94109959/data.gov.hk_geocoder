@@ -57,7 +57,7 @@ def getdata(csvdata, addresscolumn): #get data from ADI Tool
     error100row = ''
     nocolname = ''
     # print('shape', shape)
-    numberofmaxrow = 200
+    numberofmaxrow = 500
     getdata.numberofmaxrow = numberofmaxrow
     if shape[0] > numberofmaxrow:
         # print('csv have more than xxx row')
