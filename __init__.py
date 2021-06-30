@@ -57,7 +57,9 @@ def getdata(csvdata, addresscolumn): #get data from ADI Tool
     error100row = ''
     nocolname = ''
     # print('shape', shape)
-    if shape[0] > 200:
+    numberofmaxrow = 200
+    getdata.numberofmaxrow = numberofmaxrow
+    if shape[0] > numberofmaxrow:
         # print('csv have more than xxx row')
         error100row = 'More than 200 row'
         getdata.error100row = error100row
@@ -236,7 +238,7 @@ def front():
                                 auth_info=auth_info,
                                 path_prefix=path_prefix,
                                 csvdownload = "",
-                                message_failed = 'Uploaded file have more than 200 rows.')
+                                message_failed = 'Uploaded file have more than {maxrow} rows.'.format(maxrow=getdata.numberofmaxrow))
                 else:
                     print('1011')
                     if getdata.nocolname != '':
