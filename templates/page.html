@@ -19,9 +19,12 @@
           img.src = sourceOfPicture.replace('225x225', '225x225');
           img.style.display = "block";
           var autodownload = document.getElementById('downloadauto')
+          var autodownload2 = document.getElementById('downloadauto2')
           autodownload.style.display='none'
+          autodownload2.style.display='none'
           if (document.querySelector("input[name=radioa]:checked").value=='1'){
             autodownload.style.display='block'
+            autodownload2.style.display='block'
             $('#loading').delay(5000).fadeOut('fast'); 
           }
           document.getElementById('msgfailed').innerText = ''
